@@ -22,9 +22,9 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 - ICSW_G13_4K2
     - Plan De Gestión de Configuración ICSW
     - Trabajos Prácticos
-        - TPEvaluable<Numero>
+        - TPEvaluableNumero
             - CodigoFuente
-        - TPInvestigacion<Numero>
+        - TPInvestigacionNumero
     - Teórico
         - PPT
             - Parcial N
@@ -39,18 +39,18 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 
 | **Nombre Ítem configuración** | **Regla de nombrado** | **Ubicación física** | **Tipo de ítem** |
 | --- | --- | --- | --- |
-| Enunciado de Trabajo Práctico | TP_<Numero>_Enunciado.<extension> | ICSW_G13_4K2/TrabajosPractico/TPEvaluable<Numero>/ | Trabajo Práctico |
-| Resolución de Trabajo Práctico | TP_<Numero>_Resolucion.<extension> | ICSW_G13_4K2/TrabajosPracticos/TPEvaluable<Numero>/ | Trabajo Práctico |
-| Código Fuente | TP_<NombreClase>.<extensión> | ICSW_G13_4K2/TrabajoPracticos/TPEvaluable<nombre>/CodigoFuente | Trabajo Práctico |
-| Presentaciones de clase | <NumeroDeClase>_<nombreTema>.pdf | ICSW_G13_4K2/Teorico/PPT/ParcialN | Teórico |
-| Bibliografía | ICSW_Bibliografia_<Nombre>.<extensión> | ICSW_G13_4K2/Teorico/Bibliografia | Teórico |
-| Enunciado trabajo de investigación | TPInvestigacion<Nombre>_Enunciado | ICSW_G13_4K2/TrabajosPracticos/TPInvestigacion<Nombre>/ | Trabajo Práctico |
-| Resolución trabajo de investigación | TPInvestigacion<Nombre>_ Resolución | ICSW_G13_4K2/TrabajosPracticos/TPInvestigacion<Nombre>/ | Trabajo Práctico |
+| Enunciado de Trabajo Práctico | TP_Numero_Enunciado.Extension | ICSW_G13_4K2/TrabajosPractico/TPEvaluableNumero/ | Trabajo Práctico |
+| Resolución de Trabajo Práctico | TP_Numero_Resolucion.Extension | ICSW_G13_4K2/TrabajosPracticos/TPEvaluableNumero/ | Trabajo Práctico |
+| Código Fuente | TP_NombreClase.Extensión | ICSW_G13_4K2/TrabajoPracticos/TPEvaluableNumero/CodigoFuente | Trabajo Práctico |
+| Presentaciones de clase | NumeroDeClase_NombreTema.pdf | ICSW_G13_4K2/Teorico/PPT/ParcialN | Teórico |
+| Bibliografía | ICSW_Bibliografia_Nombre.Extensión | ICSW_G13_4K2/Teorico/Bibliografia | Teórico |
+| Enunciado trabajo de investigación | TPInvestigacionNumero_Enunciado | ICSW_G13_4K2/TrabajosPracticos/TPInvestigacionNumero/ | Trabajo Práctico |
+| Resolución trabajo de investigación | TPInvestigacionNumero_ Resolución | ICSW_G13_4K2/TrabajosPracticos/TPInvestigacionNumero/ | Trabajo Práctico |
 | Guía de Ejercicios Prácticos Resueltos | EjerciciosPracticosResueltos.pdf | ICSW_G13_4K2/TrabajosPracticos/ | Trabajo Práctico |
-| Enunciado de parcial | Parcial<numero>.<extension> | ICSW_G13_4K2/Parciales | Parciales |
+| Enunciado de parcial | ParcialNumero.Extension | ICSW_G13_4K2/Parciales | Parciales |
 | Planificación de la materia | PlanificacionICSW.pdf | ICSW_G13_4K2/Planificacion | Planificación |
 | Cronograma de la materia | CronogramaICSW.pdf | ICSW_G13_4K2/Planificacion | Planificación |
-| Templates para prácticos y parciales | Template<Nombre>.<extension> | ICSW_G13_4K2/Templates | Templates |
+| Templates para prácticos y parciales | TemplateNombre.Extension | ICSW_G13_4K2/Templates | Templates |
 
 ---
 
