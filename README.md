@@ -21,17 +21,17 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 
 - ICSW_G13_4K2
     - Plan De Gestión de Configuración ICSW
-- Trabajos Prácticos
-    - TPEvaluable<Numero>
-        - CodigoFuente
-    - TPInvestigacion<Numero>
-- Teórico
-    - PPT
-        - Parcial N
-    - Bibliografía.
-- Parciales
-- Templates
-- Planificación
+    - Trabajos Prácticos
+        - TPEvaluable<Numero>
+            - CodigoFuente
+        - TPInvestigacion<Numero>
+    - Teórico
+        - PPT
+            - Parcial N
+        - Bibliografía.
+    - Parciales
+    - Templates
+    - Planificación
 
 ---
 
