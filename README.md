@@ -37,20 +37,22 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 
 ## LISTADO DE ITEMS DE CONFIGURACIÓN
 
-| **Nombre Ítem configuración** | **Regla de nombrado** | **Ubicación física** | **Tipo de ítem** |
-| --- | --- | --- | --- |
-| Enunciado de Trabajo Práctico | TP_Numero_Enunciado.Extension | ICSW_G13_4K2/TrabajosPractico/TPEvaluableNumero/ | Trabajo Práctico |
-| Resolución de Trabajo Práctico | TP_Numero_Resolucion.Extension | ICSW_G13_4K2/TrabajosPracticos/TPEvaluableNumero/ | Trabajo Práctico |
-| Código Fuente | TP_NombreClase.Extensión | ICSW_G13_4K2/TrabajoPracticos/TPEvaluableNumero/CodigoFuente | Trabajo Práctico |
-| Presentaciones de clase | NumeroDeClase_NombreTema.pdf | ICSW_G13_4K2/Teorico/PPT/ParcialN | Teórico |
-| Bibliografía | ICSW_Bibliografia_Nombre.Extensión | ICSW_G13_4K2/Teorico/Bibliografia | Teórico |
-| Enunciado trabajo de investigación | TPInvestigacionNumero_Enunciado | ICSW_G13_4K2/TrabajosPracticos/TPInvestigacionNumero/ | Trabajo Práctico |
-| Resolución trabajo de investigación | TPInvestigacionNumero_ Resolución | ICSW_G13_4K2/TrabajosPracticos/TPInvestigacionNumero/ | Trabajo Práctico |
-| Guía de Ejercicios Prácticos Resueltos | EjerciciosPracticosResueltos.pdf | ICSW_G13_4K2/TrabajosPracticos/ | Trabajo Práctico |
-| Enunciado de parcial | ParcialNumero.Extension | ICSW_G13_4K2/Parciales | Parciales |
-| Planificación de la materia | PlanificacionICSW.pdf | ICSW_G13_4K2/Planificacion | Planificación |
-| Cronograma de la materia | CronogramaICSW.pdf | ICSW_G13_4K2/Planificacion | Planificación |
-| Templates para prácticos y parciales | TemplateNombre.Extension | ICSW_G13_4K2/Templates | Templates |
+| Nombre ítem configuración             | Regla de nombrado                                         | Ubicación física                                                             | Tipo de ítem     |
+|---------------------------------------|-----------------------------------------------------------|------------------------------------------------------------------------------|------------------|
+| Enunciado de Trabajo Práctico         | TPEvaluable&lt;Numero&gt;_Enunciado.pdf                   | ICSW_G13_4K2/TrabajosPractico/TPEvaluable&lt;Numero&gt;/                     | Trabajo Práctico |
+| Resolución de Trabajo Práctico        | TPEvaluable&lt;Numero&gt;_Resolucion.pdf                  | ICSW_G13_4K2/TrabajosPracticos/TPEvaluable&lt;Numero&gt;/                    | Trabajo Práctico |
+| Código Fuente                         | TPEvaluable&lt;Numero&gt;_&lt;NombreClase&gt;.&lt;extension&gt; | ICSW_G13_4K2/TrabajoPracticos/TPEvaluable&lt;Numero&gt;/CodigoFuente/        | Trabajo Práctico |
+| Presentaciones de clase               | &lt;NumeroDeClase&gt;_&lt;NombreTema&gt;.pdf             | ICSW_G13_4K2/Teorico/PPT/Parcial&lt;Numero&gt;/                             | Teórico          |
+| Bibliografía                          | ICSW_Bibliografia_&lt;Nombre&gt;.pdf                      | ICSW_G13_4K2/Teorico/Bibliografia/                                          | Teórico          |
+| Enunciado trabajo de investigación    | TPInvestigacion&lt;Nombre&gt;_Enunciado.pdf              | ICSW_G13_4K2/TrabajosPracticos/TPInvestigacion&lt;Nombre&gt;/               | Trabajo Práctico |
+| Resolución trabajo de investigación   | TPInvestigacion&lt;Nombre&gt;_Resolucion.pdf             | ICSW_G13_4K2/TrabajosPracticos/TPInvestigacion&lt;Nombre&gt;/               | Trabajo Práctico |
+| Guía de Ejercicios Prácticos Resueltos| EjerciciosPracticosResueltos.pdf                          | ICSW_G13_4K2/TrabajosPracticos/                                             | Trabajo Práctico |
+| Enunciado de parcial                  | Parcial&lt;Numero&gt;_Enunciado.pdf                       | ICSW_G13_4K2/Parciales/                                                     | Parciales        |
+| Planificación de la materia           | PlanificacionICSW.pdf                                     | ICSW_G13_4K2/Planificacion/                                                 | Planificación    |
+| Cronograma de la materia              | CronogramaICSW.pdf                                        | ICSW_G13_4K2/Planificacion/                                                 | Planificación    |
+| Template para parcial                 | Parcial&lt;Numero&gt;_TemplateParcial.&lt;extension&gt;   | ICSW_G13_4K2/Parciales/Parcial&lt;Numero&gt;/                               | Templates        |
+| Template para práctico                | Parcial&lt;Numero&gt;_Tempate&lt;NombreCaso&gt;.&lt;extension&gt; | ICSW_G13_4K2/Parciales/Parcial&lt;Numero&gt;/                               | Templates        |
+
 
 ---
 
