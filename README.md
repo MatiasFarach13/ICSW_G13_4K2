@@ -20,18 +20,19 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 ## ESTRUCTURA DE ARCHIVOS
 
 - ICSW_G13_4K2
-    - Plan De Gestión de Configuración ICSW
-    - Trabajos Prácticos
-        - TPEvaluableNumero
+    - TrabajosPracticos
+        - TPEvaluable&lt;Numero&gt;
             - CodigoFuente
-        - TPInvestigacionNumero
-    - Teórico
+        - TPInvestigacion&lt;Nombre&gt;
+    - Teorico
         - PPT
-            - Parcial N
-        - Bibliografía.
+        - Bibliografia
     - Parciales
-    - Templates
-    - Planificación
+        - Parcial1
+            - Templates
+        - Parcial2
+            - Templates
+    - Planificacion
 
 ---
 
@@ -42,7 +43,7 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 | Enunciado de Trabajo Práctico         | TPEvaluable&lt;Numero&gt;_Enunciado.pdf                   | ICSW_G13_4K2/TrabajosPracticos/TPEvaluable&lt;Numero&gt;/                     | Trabajo Práctico |
 | Resolución de Trabajo Práctico        | TPEvaluable&lt;Numero&gt;_Resolucion.pdf                  | ICSW_G13_4K2/TrabajosPracticos/TPEvaluable&lt;Numero&gt;/                    | Trabajo Práctico |
 | Código Fuente                         | TPEvaluable&lt;Numero&gt;_&lt;NombreClase&gt;.&lt;extension&gt; | ICSW_G13_4K2/TrabajoPracticos/TPEvaluable&lt;Numero&gt;/CodigoFuente/        | Trabajo Práctico |
-| Presentaciones de clase               | &lt;NumeroDeClase&gt;_&lt;NombreTema&gt;.pdf             | ICSW_G13_4K2/Teorico/PPT/Parcial&lt;Numero&gt;/                             | Teórico          |
+| Presentaciones de clase               | &lt;NumeroDeClase&gt;_&lt;NombreTema&gt;.pdf             | ICSW_G13_4K2/Teorico/PPT/                             | Teórico          |
 | Bibliografía                          | ICSW_Bibliografia_&lt;Nombre&gt;.pdf                      | ICSW_G13_4K2/Teorico/Bibliografia/                                          | Teórico          |
 | Enunciado trabajo de investigación    | TPInvestigacion&lt;Nombre&gt;_Enunciado.pdf              | ICSW_G13_4K2/TrabajosPracticos/TPInvestigacion&lt;Nombre&gt;/               | Trabajo Práctico |
 | Resolución trabajo de investigación   | TPInvestigacion&lt;Nombre&gt;_Resolucion.pdf             | ICSW_G13_4K2/TrabajosPracticos/TPInvestigacion&lt;Nombre&gt;/               | Trabajo Práctico |
@@ -50,9 +51,9 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 | Enunciado de parcial                  | Parcial&lt;Numero&gt;_Enunciado.pdf                       | ICSW_G13_4K2/Parciales/                                                     | Parciales        |
 | Planificación de la materia           | PlanificacionICSW.pdf                                     | ICSW_G13_4K2/Planificacion/                                                 | Planificación    |
 | Cronograma de la materia              | CronogramaICSW.pdf                                        | ICSW_G13_4K2/Planificacion/                                                 | Planificación    |
-| Template para parcial                 | Parcial&lt;Numero&gt;_TemplateParcial.&lt;extension&gt;   | ICSW_G13_4K2/Parciales/Parcial&lt;Numero&gt;/                               | Templates        |
-| Template para práctico                | Parcial&lt;Numero&gt;_Tempate&lt;NombreCaso&gt;.&lt;extension&gt; | ICSW_G13_4K2/Parciales/Parcial&lt;Numero&gt;/                               | Templates        |
-
+| Template para parcial                 | Parcial&lt;Numero&gt;_TemplateParcial.&lt;extension&gt;   | ICSW_G13_4K2/Parciales/Parcial&lt;Numero&gt;/Templates/                               | Templates        |
+| Template para práctico                | Parcial&lt;Numero&gt;_Tempate&lt;NombreCaso&gt;.&lt;extension&gt; | ICSW_G13_4K2/Parciales/Parcial&lt;Numero&gt;/Templates/                               | Templates        |
+| Plan de Configuración                  | ICSW_PlanDeGestionDeConfiguracion_G13        | ICSW_G13_4K2/                 | Plan de Configuración   |
 
 ---
 
