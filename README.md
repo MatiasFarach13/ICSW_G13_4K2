@@ -39,7 +39,7 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 
 | Nombre ítem configuración             | Regla de nombrado                                         | Ubicación física                                                             | Tipo de ítem     |
 |---------------------------------------|-----------------------------------------------------------|------------------------------------------------------------------------------|------------------|
-| Enunciado de Trabajo Práctico         | TPEvaluable&lt;Numero&gt;_Enunciado.pdf                   | ICSW_G13_4K2/TrabajosPractico/TPEvaluable&lt;Numero&gt;/                     | Trabajo Práctico |
+| Enunciado de Trabajo Práctico         | TPEvaluable&lt;Numero&gt;_Enunciado.pdf                   | ICSW_G13_4K2/TrabajosPracticos/TPEvaluable&lt;Numero&gt;/                     | Trabajo Práctico |
 | Resolución de Trabajo Práctico        | TPEvaluable&lt;Numero&gt;_Resolucion.pdf                  | ICSW_G13_4K2/TrabajosPracticos/TPEvaluable&lt;Numero&gt;/                    | Trabajo Práctico |
 | Código Fuente                         | TPEvaluable&lt;Numero&gt;_&lt;NombreClase&gt;.&lt;extension&gt; | ICSW_G13_4K2/TrabajoPracticos/TPEvaluable&lt;Numero&gt;/CodigoFuente/        | Trabajo Práctico |
 | Presentaciones de clase               | &lt;NumeroDeClase&gt;_&lt;NombreTema&gt;.pdf             | ICSW_G13_4K2/Teorico/PPT/Parcial&lt;Numero&gt;/                             | Teórico          |
