@@ -70,4 +70,4 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 | N | Número |
 | G13 | Grupo 13 |
 | PPT | Power Point |
-| 4K2 | Comision 2 del 4to año de la carrera Ing en Sistemas de Información|
+| 4K2 | Comision 2 del 4to año de la carrera Ingenieria en Sistemas de Información|
