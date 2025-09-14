@@ -23,7 +23,7 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
     - TrabajosPracticos
         - TPEvaluable&lt;Numero&gt;_CodigoFuente
     - Teorico
-        - PPT
+        - PresentacionesDeClase
         - Bibliografia
     - Parciales
         - Parcial1
