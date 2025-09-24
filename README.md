@@ -21,7 +21,7 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 
 - ICSW_G13_4K2
     - TrabajosPracticos
-        - TPEvaluable&lt;Numero&gt;_CodigoFuente
+        - TPEvaluable&lt;Numero&gt
     - Teorico
         - PresentacionesDeClase
         - Bibliografia
