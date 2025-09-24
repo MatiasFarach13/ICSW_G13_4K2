@@ -21,7 +21,6 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 
 - ICSW_G13_4K2
     - TrabajosPracticos
-        - TPEvaluable&lt;Numero&gt;
     - Teorico
         - PresentacionesDeClase
         - Bibliografia
@@ -39,7 +38,7 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 | Nombre ítem configuración                  | Regla de nombrado                                         | Ubicación física                                                           | Tipo de ítem          |
 |--------------------------------------------|-----------------------------------------------------------|----------------------------------------------------------------------------|-----------------------|
 | Enunciados de Trabajos Prácticos           | TPs_Enunciados.pdf                                        | ICSW_G13_4K2/TrabajosPracticos/                                            | Trabajo Práctico      |
-| Resolución de Trabajo Práctico             | TP&lt;Tipo&gt;&lt;Nombre&gt;_Resolucion.pdf               | ICSW_G13_4K2/TrabajosPracticos/TPEvaluable&lt;Numero&gt;/                  | Trabajo Práctico      |
+| Resolución de Trabajo Práctico             | TP&lt;Numero&gt;&lt;Nombre&gt;_Resolucion.pdf               | ICSW_G13_4K2/TrabajosPracticos/                 | Trabajo Práctico      |
 | Presentaciones de clase                    | &lt;NumeroDeClase&gt;_&lt;NombreTema&gt;.pdf             | ICSW_G13_4K2/Teorico/PPT/                                                  | Teórico               |
 | Bibliografía                               | ICSW_Bibliografia_&lt;Nombre&gt;.pdf                      | ICSW_G13_4K2/Teorico/Bibliografia/                                         | Teórico               |
 | Enunciados de Trabajos de investigación    | TPsInvestigacion_Enunciados.pdf                            | ICSW_G13_4K2/TrabajosPracticos/                                            | Trabajo Práctico      |
