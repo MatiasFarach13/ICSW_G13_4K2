@@ -56,6 +56,7 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 ## DEFINICIÓN DE LINEA BASE
 
 - Posterior a cada corrección (Parciales/Trabajos Prácticos)
+- Justificacion: Al establecer la línea base después de la corrección, se evita que versiones preliminares o con errores sean utilizadas como referencia para futuras actividades permitiendonos identificar con claridad qué versión fue aprobada y cuándo, lo que mejora el seguimiento del proyecto y la gestión de cambios.
 
 ---
 
@@ -69,3 +70,10 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 | G13 | Grupo 13 |
 | PPT | Power Point |
 | 4K2 | Comision 2 del 4to año de la carrera Ingenieria en Sistemas de Información|
+| <> | Indica un campo variable que debe ser reemplazado por un valor específico (por ejemplo: número, nombre, extensión, etc.) |
+| <Numero> | Campo variable que debe reemplazarse por un número específico |
+| <Nombre> | Campo variable que debe reemplazarse por el nombre del tema o archivo |
+| <NombreTema> | Nombre del tema tratado en la clase o presentación |
+| <NombreCaso> | Nombre del caso práctico o de estudio |
+| <extension> | Extensión del archivo (ej. .pdf, .docx, .pptx) |
+| Templates	| Archivos modelo que sirven como base para completar entregables|
