@@ -71,9 +71,9 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 | PPT | Power Point |
 | 4K2 | Comision 2 del 4to año de la carrera Ingenieria en Sistemas de Información|
 | <> | Indica un campo variable que debe ser reemplazado por un valor específico (por ejemplo: número, nombre, extensión, etc.) |
-| <Numero> | Campo variable que debe reemplazarse por un número específico |
-| <Nombre> | Campo variable que debe reemplazarse por el nombre del tema o archivo |
-| <NombreTema> | Nombre del tema tratado en la clase o presentación |
-| <NombreCaso> | Nombre del caso práctico o de estudio |
-| <extension> | Extensión del archivo (ej. .pdf, .docx, .pptx) |
+| < Numero > | Campo variable que debe reemplazarse por un número específico |
+| < Nombre > | Campo variable que debe reemplazarse por el nombre del tema o archivo |
+| < NombreTema > | Nombre del tema tratado en la clase o presentación |
+| < NombreCaso > | Nombre del caso práctico o de estudio |
+| < extension > | Extensión del archivo (ej. .pdf, .docx, .pptx) |
 | Templates	| Archivos modelo que sirven como base para completar entregables|
