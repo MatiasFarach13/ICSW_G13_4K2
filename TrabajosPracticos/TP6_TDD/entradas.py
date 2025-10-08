@@ -1,5 +1,3 @@
-# entradas.py (versión final refactorizada)
-
 from datetime import date, timedelta
 
 # --- Definición de Excepciones ---
@@ -13,10 +11,10 @@ class FechaInvalidaError(ParqueError): pass
 PRECIOS_PASE = {"VIP": 10000, "Regular": 5000}
 EDAD_INFANTE_MAX = 3
 EDAD_NINO_MAX = 15
-EDAD_SENIOR_MIN = 61
+EDAD_SENIOR_MIN = 60
 DESCUENTO_PORCENTAJE = 0.5
 DIAS_ANTICIPACION_MAX = 30
-FECHAS_CERRADO_FERIADO = [(12, 25), (1, 1)] # (mes, día)
+FECHAS_CERRADO_FERIADO = [(12, 25), (1, 1)]  # (mes, día)
 
 # --- Funciones de Validación (Helpers) ---
 
@@ -26,50 +24,61 @@ def _validar_fecha(fecha_visita):
         raise FechaInvalidaError("La fecha de visita no puede ser en el pasado.")
     if fecha_visita > (hoy + timedelta(days=DIAS_ANTICIPACION_MAX)):
         raise FechaInvalidaError(f"Solo se puede comprar con hasta {DIAS_ANTICIPACION_MAX} días de anticipación.")
-    if fecha_visita.weekday() == 0:
+    if fecha_visita.weekday() == 0:  # lunes
         raise ParqueCerradoError("El parque está cerrado los lunes.")
     if (fecha_visita.month, fecha_visita.day) in FECHAS_CERRADO_FERIADO:
         raise ParqueCerradoError("El parque está cerrado por feriado.")
+
 
 def _validar_cantidad(cantidad):
     if not (1 <= cantidad <= 10):
         raise CantidadInvalidaError("La cantidad de entradas debe ser entre 1 y 10.")
 
+
 def _validar_pago(forma_pago):
     if forma_pago is None:
         raise PagoInvalidoError("Debe seleccionar una forma de pago.")
 
-# --- Función de Cálculo de Precios ---
 
-def _calcular_monto_total(edades, tipo_pase):
-    precio_base = PRECIOS_PASE.get(tipo_pase, 0)
-    monto_total = 0
-    for edad in edades:
+# --- Cálculo de precios considerando edades y tipos ---
+def _calcular_monto_total(edades, tipos_pase):
+    """
+    Calcula el total combinando edades y tipos de pase.
+    Cada elemento de 'edades' tiene un tipo correspondiente en 'tipos_pase'.
+    """
+    if len(edades) != len(tipos_pase):
+        raise ValueError("La cantidad de edades y tipos de pase debe coincidir.")
+
+    total = 0
+    for edad, tipo in zip(edades, tipos_pase):
+        precio_base = PRECIOS_PASE.get(tipo, 0)
         if edad <= EDAD_INFANTE_MAX:
-            precio_entrada = 0
-        elif (EDAD_INFANTE_MAX < edad <= EDAD_NINO_MAX) or (edad >= EDAD_SENIOR_MIN):
-            precio_entrada = precio_base * DESCUENTO_PORCENTAJE
+            precio = 0
+        elif 4 <= edad <= EDAD_NINO_MAX or edad >= EDAD_SENIOR_MIN:
+            precio = precio_base * DESCUENTO_PORCENTAJE
         else:
-            precio_entrada = precio_base
-        monto_total += precio_entrada
-    return monto_total
+            precio = precio_base
+        total += precio
+    return total
 
-# --- Función Principal ---
 
-def comprar_entradas(fecha_visita, cantidad, edades, tipo_pase, forma_pago):
-    # 1. Validaciones
+# --- Función principal ---
+def comprar_entradas(fecha_visita, edades, tipos_pase, forma_pago):
+    cantidad = len(edades)
+
+    # Validaciones
     _validar_cantidad(cantidad)
     _validar_pago(forma_pago)
     _validar_fecha(fecha_visita)
-    
-    # 2. Lógica de Negocio
-    monto_total = _calcular_monto_total(edades, tipo_pase)
 
-    # 3. Simulación de resultado
+    # Cálculo del monto total
+    total_pagado = _calcular_monto_total(edades, tipos_pase)
+
+    # Resultado simulado
     return {
         "status": "confirmado",
         "email": f"confirmacion_{fecha_visita.isoformat()}@parque.com",
         "cantidad": cantidad,
-        "tipo_pase": tipo_pase,
-        "monto_total": monto_total,
+        "total_pagado": total_pagado,
+        "fecha": fecha_visita.isoformat(),
     }
