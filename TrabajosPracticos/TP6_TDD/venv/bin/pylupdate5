@@ -1,9 +1,0 @@
-#!/bin/sh
-'''exec' "/home/tomas/Desktop/Universidad/4to /ICSW/Repo/ICSW_G13_4K2/TrabajosPracticos/TP6_TDD/venv/bin/python3" "$0" "$@"
-' '''
-import sys
-from PyQt5.pylupdate_main import main
-if __name__ == '__main__':
-    if sys.argv[0].endswith('.exe'):
-        sys.argv[0] = sys.argv[0][:-4]
-    sys.exit(main())
