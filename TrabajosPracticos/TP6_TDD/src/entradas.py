@@ -40,7 +40,7 @@ def _validar_pago(forma_pago):
     if forma_pago is None:
         raise PagoInvalidoError("Debe seleccionar una forma de pago.")
 
-def validarEmail(email):
+def _validar_email(email):
     import re
     patron = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     if not re.match(patron, email):
@@ -68,25 +68,28 @@ def _calcular_monto_total(edades, tipos_pase):
         total += precio
     return total
 
-
 # --- Función principal ---
-def comprar_entradas(fecha_visita, edades, tipos_pase, forma_pago, email):
+def comprar_entradas(fecha_visita, edades, tipos_pase, forma_pago, email, enviar_email=None):
     cantidad = len(edades)
 
     # Validaciones
-    validarEmail(email)
+    _validar_email(email)
     _validar_cantidad(cantidad)
     _validar_pago(forma_pago)
     _validar_fecha(fecha_visita)
 
     # Cálculo del monto total
     total_pagado = _calcular_monto_total(edades, tipos_pase)
-
+    
+    # enviar confirmacion
     # Resultado simulado
-    return {
+    resultado = {
         "status": "confirmado",
         "email": f"confirmacion_{fecha_visita.isoformat()}@parque.com",
         "cantidad": cantidad,
         "total_pagado": total_pagado,
         "fecha": fecha_visita.isoformat(),
     }
+    if enviar_email:
+        enviar_email(email, resultado)
+    return resultado

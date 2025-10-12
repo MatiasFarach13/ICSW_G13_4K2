@@ -8,12 +8,21 @@ from src.entradas import (
     FechaInvalidaError,
     EmailInvalidoError
 )
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 
 # --- Variables de apoyo ---
 hoy = date.today()
 
+# calcula una fecha proxima valida
 
+def proxima_fecha_valida():
+    hoy = date.today()
+    dias = 1
+    while True:
+        f = hoy + timedelta(days=dias)
+        if f.weekday() != 0 and (f.month, f.day) not in [(12, 25), (1, 1)]:
+            return f
+        dias += 1
 # ---------------------------------------------
 # ✅ Casos exitosos
 # ---------------------------------------------
@@ -122,6 +131,19 @@ def test_dos_compras_en_el_mismo_dia():
     assert compra1["status"] == compra2["status"] == "confirmado"
     assert compra1["cantidad"] == compra2["cantidad"] == 10
 
+def test_envio_email_confirmacion():
+    mock_enviar = Mock()
+    edades = [30, 10]
+    tipos = ["VIP", "Regular"]
+    resultado = comprar_entradas(
+        fecha_visita= proxima_fecha_valida(),  # día abierto
+        edades=edades,
+        tipos_pase=tipos,
+        forma_pago="MercadoPago",
+        email="valido@example.com",
+        enviar_email=mock_enviar
+    )
+    mock_enviar.assert_called_once_with("valido@example.com", resultado)
 
 # ---------------------------------------------
 # ❌ Casos que deben fallar
@@ -188,7 +210,7 @@ def test_compra_mas_de_10_entradas():
     """No se pueden comprar más de 10 entradas en una sola compra."""
     with pytest.raises(CantidadInvalidaError):
         comprar_entradas(
-            fecha_visita=hoy,
+            fecha_visita=proxima_fecha_valida(),
             edades=[25] * 11,
             tipos_pase=["Regular"] * 11,
             forma_pago="MercadoPago",
@@ -200,7 +222,7 @@ def test_sin_forma_pago():
     """Debe fallar si no se especifica forma de pago."""
     with pytest.raises(PagoInvalidoError):
         comprar_entradas(
-            fecha_visita=hoy,
+            fecha_visita=proxima_fecha_valida(),
             edades=[20, 21],
             tipos_pase=["Regular", "VIP"],
             forma_pago=None,
@@ -211,7 +233,7 @@ def test_compra_email_invalido():
     """Debe fallar si el formato del email es inválido."""
     with pytest.raises(EmailInvalidoError):
         comprar_entradas(
-            fecha_visita=hoy,
+            fecha_visita=proxima_fecha_valida(),
             edades=[20, 21],
             tipos_pase=["Regular", "VIP"],
             forma_pago="MercadoPago",
@@ -222,7 +244,7 @@ def test_compra_email_vacio():
     """Debe fallar si el email está vacío."""
     with pytest.raises(EmailInvalidoError):
         comprar_entradas(
-            fecha_visita=hoy,
+            fecha_visita=proxima_fecha_valida(),
             edades=[20, 21],
             tipos_pase=["Regular", "VIP"],
             forma_pago="MercadoPago",
@@ -233,9 +255,10 @@ def test_compra_email_sin_arroba():
     """Debe fallar si el email no contiene '@'."""
     with pytest.raises(EmailInvalidoError):
         comprar_entradas(
-            fecha_visita=hoy,
+            fecha_visita=proxima_fecha_valida(),
             edades=[20, 21],
             tipos_pase=["Regular", "VIP"],
             forma_pago="MercadoPago",
             email="email.invalido.com"
         )
+
