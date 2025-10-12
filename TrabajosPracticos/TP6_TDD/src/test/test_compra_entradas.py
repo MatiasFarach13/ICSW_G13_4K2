@@ -1,11 +1,12 @@
 import pytest
 from datetime import date, timedelta
-from entradas import (
+from src.entradas import (
     comprar_entradas,
     ParqueCerradoError,
     PagoInvalidoError,
     CantidadInvalidaError,
     FechaInvalidaError,
+    EmailInvalidoError
 )
 from unittest.mock import patch
 
@@ -22,7 +23,7 @@ def test_compra_hoy_parcheado():
     edades = [25, 10, 70, 2]
     tipos = ["VIP", "Regular", "VIP", "Regular"]
 
-    with patch("entradas.date") as mock_date:
+    with patch("src.entradas.date") as mock_date:
         mock_date.today.return_value = fecha_simulada
         mock_date.side_effect = lambda *args, **kwargs: date(*args, **kwargs)
 
@@ -34,7 +35,8 @@ def test_compra_hoy_parcheado():
                     fecha_visita=fecha_simulada,
                     edades=edades,
                     tipos_pase=tipos,
-                    forma_pago="MercadoPago"
+                    forma_pago="MercadoPago",
+                    email="valido@example.com"
                 )
         else:
             # Debe poder comprar normalmente
@@ -42,7 +44,8 @@ def test_compra_hoy_parcheado():
                 fecha_visita=fecha_simulada,
                 edades=edades,
                 tipos_pase=tipos,
-                forma_pago="MercadoPago"
+                forma_pago="MercadoPago",
+                email="valido@example.com"
             )
 
             assert resultado["status"] == "confirmado"
@@ -54,7 +57,7 @@ def test_compra_exitosa_con_fecha_valida_parcheada():
     """Compra válida en un día que el parque está abierto, simulando hoy 07/10/2025."""
     fecha_simulada = date(2025, 10, 7)  # "hoy" fijo para el test
 
-    with patch("entradas.date") as mock_date:
+    with patch("src.entradas.date") as mock_date:
         mock_date.today.return_value = fecha_simulada
         mock_date.side_effect = lambda *args, **kwargs: date(*args, **kwargs)
 
@@ -69,7 +72,8 @@ def test_compra_exitosa_con_fecha_valida_parcheada():
             fecha_visita=fecha_abierta,
             edades=[25, 10],
             tipos_pase=["VIP", "Regular"],
-            forma_pago="MercadoPago"
+            forma_pago="MercadoPago",
+            email="valido@example.com"
         )
 
         # Comprobaciones
@@ -85,7 +89,7 @@ def test_compra_con_tipos_combinados_y_varias_edades_parcheada():
     edades = [10, 30, 65]
     tipos = ["Regular", "VIP", "Regular"]
 
-    with patch("entradas.date") as mock_date:
+    with patch("src.entradas.date") as mock_date:
         mock_date.today.return_value = fecha_simulada
         mock_date.side_effect = lambda *args, **kwargs: date(*args, **kwargs)
 
@@ -96,7 +100,8 @@ def test_compra_con_tipos_combinados_y_varias_edades_parcheada():
             fecha_visita=fecha_valida,
             edades=edades,
             tipos_pase=tipos,
-            forma_pago="MercadoPago"
+            forma_pago="MercadoPago",
+            email="valido@example.com"
         )
 
         # Comprobaciones
@@ -111,8 +116,8 @@ def test_dos_compras_en_el_mismo_dia():
     edades = [25] * 10
     tipos = ["Regular"] * 10
 
-    compra1 = comprar_entradas(hoy, edades, tipos, "MercadoPago")
-    compra2 = comprar_entradas(hoy, edades, tipos, "MercadoPago")
+    compra1 = comprar_entradas(hoy, edades, tipos, "MercadoPago", email="valido@example.com")
+    compra2 = comprar_entradas(hoy, edades, tipos, "MercadoPago", email="valido@example.com")
 
     assert compra1["status"] == compra2["status"] == "confirmado"
     assert compra1["cantidad"] == compra2["cantidad"] == 10
@@ -128,6 +133,7 @@ def test_compra_dia_anterior():
             edades=[30],
             tipos_pase=["Regular"],
             forma_pago="MercadoPago",
+            email="valido@example.com"
         )
 
 def test_compra_mas_de_30_dias():
@@ -137,6 +143,7 @@ def test_compra_mas_de_30_dias():
             edades=[30],
             tipos_pase=["Regular"],
             forma_pago="MercadoPago",
+            email="valido@example.com"
         )
 
 
@@ -145,7 +152,7 @@ def test_compra_para_feriado():
     fecha_compra = date(2025, 12, 10)
     fecha_visita = date(2025, 12, 25)
 
-    with patch("entradas.date") as mock_date:
+    with patch("src.entradas.date") as mock_date:
         mock_date.today.return_value = fecha_compra
         mock_date.side_effect = lambda *args, **kwargs: date(*args, **kwargs)
 
@@ -154,7 +161,8 @@ def test_compra_para_feriado():
                 fecha_visita=fecha_visita,
                 edades=[25],
                 tipos_pase=["VIP"],
-                forma_pago="MercadoPago"
+                forma_pago="MercadoPago",
+                email="valido@example.com"
             )
 
 def test_compra_para_lunes():
@@ -162,7 +170,7 @@ def test_compra_para_lunes():
     fecha_compra = date(2025, 12, 10)
     fecha_visita = date(2025, 12, 15)
 
-    with patch("entradas.date") as mock_date:
+    with patch("src.entradas.date") as mock_date:
         mock_date.today.return_value = fecha_compra
         mock_date.side_effect = lambda *args, **kwargs: date(*args, **kwargs)
 
@@ -171,7 +179,8 @@ def test_compra_para_lunes():
                 fecha_visita=fecha_visita,
                 edades=[25],
                 tipos_pase=["VIP"],
-                forma_pago="MercadoPago"
+                forma_pago="MercadoPago",
+                email="valido@example.com"
             )
 
 
@@ -183,6 +192,7 @@ def test_compra_mas_de_10_entradas():
             edades=[25] * 11,
             tipos_pase=["Regular"] * 11,
             forma_pago="MercadoPago",
+            email="valido@example.com"
         )
 
 
@@ -194,4 +204,38 @@ def test_sin_forma_pago():
             edades=[20, 21],
             tipos_pase=["Regular", "VIP"],
             forma_pago=None,
+            email="valido@example.com"
+        )
+
+def test_compra_email_invalido():
+    """Debe fallar si el formato del email es inválido."""
+    with pytest.raises(EmailInvalidoError):
+        comprar_entradas(
+            fecha_visita=hoy,
+            edades=[20, 21],
+            tipos_pase=["Regular", "VIP"],
+            forma_pago="MercadoPago",
+            email="email_invalido"  # Formato inválido
+        )
+
+def test_compra_email_vacio():
+    """Debe fallar si el email está vacío."""
+    with pytest.raises(EmailInvalidoError):
+        comprar_entradas(
+            fecha_visita=hoy,
+            edades=[20, 21],
+            tipos_pase=["Regular", "VIP"],
+            forma_pago="MercadoPago",
+            email=""
+        )
+
+def test_compra_email_sin_arroba():
+    """Debe fallar si el email no contiene '@'."""
+    with pytest.raises(EmailInvalidoError):
+        comprar_entradas(
+            fecha_visita=hoy,
+            edades=[20, 21],
+            tipos_pase=["Regular", "VIP"],
+            forma_pago="MercadoPago",
+            email="email.invalido.com"
         )

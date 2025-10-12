@@ -1,4 +1,6 @@
-#!/home/frangonza120/Escritorio/1.Projectos/Universidad/ICSW_G13_4K2/TrabajosPracticos/TP6_TDD/venv/bin/python
+#!/bin/sh
+'''exec' "/home/tomas/Desktop/Universidad/4to /ICSW/Repo/ICSW_G13_4K2/TrabajosPracticos/TP6_TDD/venv/bin/python3" "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys

@@ -1,8 +1,9 @@
-#!/home/frangonza120/Escritorio/1.Projectos/Universidad/ICSW_G13_4K2/TrabajosPracticos/TP6_TDD/venv/bin/python
-# -*- coding: utf-8 -*-
-import re
+#!/bin/sh
+'''exec' "/home/tomas/Desktop/Universidad/4to /ICSW/Repo/ICSW_G13_4K2/TrabajosPracticos/TP6_TDD/venv/bin/python3" "$0" "$@"
+' '''
 import sys
 from PyQt5.uic.pyuic import main
 if __name__ == '__main__':
-    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    if sys.argv[0].endswith('.exe'):
+        sys.argv[0] = sys.argv[0][:-4]
     sys.exit(main())

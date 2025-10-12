@@ -6,6 +6,7 @@ class ParqueCerradoError(ParqueError): pass
 class PagoInvalidoError(ParqueError): pass
 class CantidadInvalidaError(ParqueError): pass
 class FechaInvalidaError(ParqueError): pass
+class EmailInvalidoError(ParqueError): pass
 
 # --- Constantes de Reglas de Negocio ---
 PRECIOS_PASE = {"VIP": 10000, "Regular": 5000}
@@ -39,6 +40,12 @@ def _validar_pago(forma_pago):
     if forma_pago is None:
         raise PagoInvalidoError("Debe seleccionar una forma de pago.")
 
+def validarEmail(email):
+    import re
+    patron = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    if not re.match(patron, email):
+        raise EmailInvalidoError("El formato del email es inválido.")
+    return True
 
 # --- Cálculo de precios considerando edades y tipos ---
 def _calcular_monto_total(edades, tipos_pase):
@@ -63,10 +70,11 @@ def _calcular_monto_total(edades, tipos_pase):
 
 
 # --- Función principal ---
-def comprar_entradas(fecha_visita, edades, tipos_pase, forma_pago):
+def comprar_entradas(fecha_visita, edades, tipos_pase, forma_pago, email):
     cantidad = len(edades)
 
     # Validaciones
+    validarEmail(email)
     _validar_cantidad(cantidad)
     _validar_pago(forma_pago)
     _validar_fecha(fecha_visita)
