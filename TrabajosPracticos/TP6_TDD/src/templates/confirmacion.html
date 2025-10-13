@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Compra Confirmada{% endblock %}
+
+{% block content %}
+<div class="success">
+    <h2>✅ ¡Compra Confirmada!</h2>
+    <p>Tu compra se ha procesado exitosamente.</p>
+</div>
+
+<div style="background-color: #e8fccf; color: #134611; padding: 20px; border-radius: 8px; margin: 20px 0; border: 2px solid #3e8914;">
+    <h3 style="color: #3e8914;">📋 Detalles de la Compra</h3>
+    <p><strong>Estado:</strong> {{ resultado.status.title() }}</p>
+    <p><strong>Fecha de Visita:</strong> {{ resultado.fecha }}</p>
+    <p><strong>Cantidad de Entradas:</strong> {{ resultado.cantidad }}</p>
+    <p><strong>Total Pagado:</strong> ${{ "{:,".format(resultado.total_pagado) }}</p>
+    <p><strong>Email de Confirmación:</strong> {{ resultado.email }}</p>
+</div>
+
+<div style="background-color: #3da35d; color: #134611; padding: 15px; border-radius: 8px; margin: 20px 0; border: 1.5px solid #3e8914;">
+    <h4 style="color: #3e8914;">📧 Confirmación por Email</h4>
+    <p>Se ha enviado un email de confirmación con todos los detalles de tu compra.</p>
+    <p><em>Recuerda revisar tu bandeja de entrada y spam.</em></p>
+</div>
+
+<div style="background-color: #96e072; color: #134611; padding: 15px; border-radius: 8px; margin: 20px 0; border: 1.5px solid #3e8914;">
+    <h4 style="color: #3e8914;">📝 Instrucciones Importantes</h4>
+    <ul>
+        <li>Presenta este comprobante en la entrada del parque</li>
+        <li>Llega 30 minutos antes de la apertura</li>
+        <li>Trae una identificación válida</li>
+        <li>Los niños menores de 12 años deben estar acompañados</li>
+    </ul>
+</div>
+
+<div style="text-align: center; margin: 30px 0;">
+    <a href="/"><button style="background-color: #134611; color: #e8fccf;">🏠 Volver al Inicio</button></a>
+    <a href="/comprar"><button style="background-color: #3e8914; color: #e8fccf;">🎫 Comprar Más Entradas</button></a>
+    <button onclick="window.print()" style="background-color: #3da35d; color: #134611;">🖨️ Imprimir Comprobante</button>
+</div>
+
+<div style="text-align: center; margin-top: 40px; font-size: 12px; color: #3e8914;">
+    <p>Código de Confirmación: {{ resultado.fecha }}-{{ resultado.cantidad }}P</p>
+    <p>¡Gracias por elegir nuestro parque temático!</p>
+</div>
+{% endblock %}

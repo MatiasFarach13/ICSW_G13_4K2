@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Parque Temático{% endblock %}</title>
+    <style>
+        /* Paleta: #134611, #3e8914, #3da35d, #96e072, #e8fccf */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8fccf;
+            color: #134611;
+        }
+        .container {
+            background-color: #96e072;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: #134611;
+        }
+        button {
+            background-color: #3e8914;
+            color: #e8fccf;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #134611;
+        }
+        input, select {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #3da35d;
+            border-radius: 4px;
+            background-color: #e8fccf;
+            color: #134611;
+        }
+        .error {
+            background-color: #3e8914;
+            color: #e8fccf;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+            border: 2px solid #134611;
+        }
+        .success {
+            background-color: #3da35d;
+            color: #e8fccf;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+            border: 2px solid #134611;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>🎢 Parque Temático - Sistema de Entradas</h1>
+        <a href="/">Inicio</a> | 
+        <a href="/comprar">Comprar Entradas</a>
+    </nav>
+    
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

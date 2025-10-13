@@ -1,3 +1,6 @@
-PyQt5==5.15.11
 pytest==7.4.0
 pytest-cov==4.1.0
+flask==2.3.3
+Werkzeug==2.3.7
+flask_sqlalchemy==2.5.1
+

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio - Parque Temático{% endblock %}
+
+{% block content %}
+<h2 style="color: #134611;">¡Bienvenido al Parque Temático!</h2>
+<p>Compra tus entradas de forma fácil y rápida.</p>
+
+<div style="text-align: center; margin: 30px 0; background-color: #96e072; padding: 20px; border-radius: 8px; color: #134611; border: 2px solid #3e8914;">
+    <h3 style="color: #3e8914;">Precios:</h3>
+    <p><strong>Pase VIP:</strong> $10,000</p>
+    <p><strong>Pase Regular:</strong> $5,000</p>
+    
+    <h4 style="color: #3e8914;">Descuentos especiales:</h4>
+    <ul style="text-align: left; display: inline-block;">
+        <li>Infantes (≤3 años): ¡GRATIS!</li>
+        <li>Niños (4-15 años): 50% descuento</li>
+        <li>Seniors (≥60 años): 50% descuento</li>
+    </ul>
+</div>
+
+<div style="text-align: center;">
+    <a href="/comprar">
+        <button style="font-size: 18px; padding: 15px 30px; background-color: #3e8914; color: #e8fccf;">🎫 Comprar Entradas</button>
+    </a>
+</div>
+
+<div style="margin-top: 30px; font-size: 14px; color: #134611; background-color: #e8fccf; border: 1px solid #3da35d; border-radius: 8px; padding: 15px;">
+    <h4 style="color: #3e8914;">Información importante:</h4>
+    <ul>
+        <li>Máximo 10 entradas por compra</li>
+        <li>Compra hasta 30 días de anticipación</li>
+        <li>Parque cerrado los lunes</li>
+        <li>Cerrado por feriados: 25/12 y 1/1</li>
+    </ul>
+</div>
+{% endblock %}

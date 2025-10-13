@@ -92,4 +92,4 @@ def comprar_entradas(fecha_visita, edades, tipos_pase, forma_pago, email, enviar
     }
     if enviar_email:
         enviar_email(email, resultado)
-    return resultado
+    return resultado 

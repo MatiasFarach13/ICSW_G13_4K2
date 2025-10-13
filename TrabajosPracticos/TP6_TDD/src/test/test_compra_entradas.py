@@ -1,6 +1,6 @@
 import pytest
 from datetime import date, timedelta
-from src.entradas import (
+from src.clases.entradas import (
     comprar_entradas,
     ParqueCerradoError,
     PagoInvalidoError,
@@ -32,7 +32,7 @@ def test_compra_hoy_parcheado():
     edades = [25, 10, 70, 2]
     tipos = ["VIP", "Regular", "VIP", "Regular"]
 
-    with patch("src.entradas.date") as mock_date:
+    with patch("src.clases.entradas.date") as mock_date:
         mock_date.today.return_value = fecha_simulada
         mock_date.side_effect = lambda *args, **kwargs: date(*args, **kwargs)
 
@@ -66,7 +66,7 @@ def test_compra_exitosa_con_fecha_valida_parcheada():
     """Compra válida en un día que el parque está abierto, simulando hoy 07/10/2025."""
     fecha_simulada = date(2025, 10, 7)  # "hoy" fijo para el test
 
-    with patch("src.entradas.date") as mock_date:
+    with patch("src.clases.entradas.date") as mock_date:
         mock_date.today.return_value = fecha_simulada
         mock_date.side_effect = lambda *args, **kwargs: date(*args, **kwargs)
 
@@ -98,7 +98,7 @@ def test_compra_con_tipos_combinados_y_varias_edades_parcheada():
     edades = [10, 30, 65]
     tipos = ["Regular", "VIP", "Regular"]
 
-    with patch("src.entradas.date") as mock_date:
+    with patch("src.clases.entradas.date") as mock_date:
         mock_date.today.return_value = fecha_simulada
         mock_date.side_effect = lambda *args, **kwargs: date(*args, **kwargs)
 
@@ -174,7 +174,7 @@ def test_compra_para_feriado():
     fecha_compra = date(2025, 12, 10)
     fecha_visita = date(2025, 12, 25)
 
-    with patch("src.entradas.date") as mock_date:
+    with patch("src.clases.entradas.date") as mock_date:
         mock_date.today.return_value = fecha_compra
         mock_date.side_effect = lambda *args, **kwargs: date(*args, **kwargs)
 
@@ -192,7 +192,7 @@ def test_compra_para_lunes():
     fecha_compra = date(2025, 12, 10)
     fecha_visita = date(2025, 12, 15)
 
-    with patch("src.entradas.date") as mock_date:
+    with patch("src.clases.entradas.date") as mock_date:
         mock_date.today.return_value = fecha_compra
         mock_date.side_effect = lambda *args, **kwargs: date(*args, **kwargs)
 
@@ -237,7 +237,7 @@ def test_compra_email_invalido():
             edades=[20, 21],
             tipos_pase=["Regular", "VIP"],
             forma_pago="MercadoPago",
-            email="email_invalido"  # Formato inválido
+            email="email_invalido"  
         )
 
 def test_compra_email_vacio():

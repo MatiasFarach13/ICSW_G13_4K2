@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Comprar Entradas{% endblock %}
+
+{% block content %}
+
+<h2 style="color: #134611;">🎫 Comprar Entradas</h2>
+
+<form action="/procesar_compra" method="POST">
+    <div style="margin: 20px 0;">
+        <label for="fecha_visita" style="color: #3e8914;"><strong>Fecha de Visita:</strong></label><br>
+        <input type="date" id="fecha_visita" name="fecha_visita" required 
+               min="{{ (date.today() + timedelta(days=1)).isoformat() }}"
+               max="{{ (date.today() + timedelta(days=30)).isoformat() }}">
+    </div>
+
+    <div style="margin: 20px 0;">
+        <label for="email" style="color: #3e8914;"><strong>Email:</strong></label><br>
+        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+    </div>
+
+    <div style="margin: 20px 0;">
+        <label for="forma_pago" style="color: #3e8914;"><strong>Forma de Pago:</strong></label><br>
+        <select id="forma_pago" name="forma_pago" required>
+            <option value="">Seleccione...</option>
+            <option value="MercadoPago">MercadoPago</option>
+            <option value="Tarjeta">Tarjeta de Crédito</option>
+            <option value="Transferencia">Transferencia</option>
+        </select>
+    </div>
+
+    <div id="personas" style="margin: 20px 0;">
+        <h3 style="color: #3e8914;">Personas</h3>
+        <div class="persona" style="border: 1.5px solid #3da35d; padding: 15px; margin: 10px 0; border-radius: 4px; background-color: #e8fccf; color: #134611;">
+            <label>Edad:</label>
+            <input type="number" name="edades" min="0" max="120" required>
+            
+            <label>Tipo de Pase:</label>
+            <select name="tipos_pase" required>
+                <option value="Regular">Regular ($5,000)</option>
+                <option value="VIP">VIP ($10,000)</option>
+            </select>
+            
+            <button type="button" onclick="eliminarPersona(this)" style="background-color: #3e8914; color: #e8fccf;">Eliminar</button>
+        </div>
+    </div>
+
+    <div style="margin: 20px 0;">
+        <button type="button" onclick="agregarPersona()" style="background-color: #3e8914; color: #e8fccf;">
+            ➕ Agregar Persona
+        </button>
+        <span id="contador" style="margin-left: 10px; color: #134611;">Personas: 1/10</span>
+    </div>
+
+    <div style="text-align: center; margin: 30px 0;">
+        <button type="submit" style="font-size: 16px; padding: 15px 30px; background-color: #3e8914; color: #e8fccf;">
+            💳 Procesar Compra
+        </button>
+        <a href="/"><button type="button" style="background-color: #134611; color: #e8fccf;">🔙 Volver</button></a>
+    </div>
+</form>
+
+<script>
+let contadorPersonas = 1;
+
+function agregarPersona() {
+    if (contadorPersonas >= 10) {
+        alert('Máximo 10 entradas por compra');
+        return;
+    }
+    
+    const personasDiv = document.getElementById('personas');
+    const nuevaPersona = document.createElement('div');
+    nuevaPersona.className = 'persona';
+    nuevaPersona.style = 'border: 1.5px solid #3da35d; padding: 15px; margin: 10px 0; border-radius: 4px; background-color: #e8fccf; color: #134611;';
+    nuevaPersona.innerHTML = `
+        <label>Edad:</label>
+        <input type="number" name="edades" min="0" max="120" required>
+        
+        <label>Tipo de Pase:</label>
+        <select name="tipos_pase" required>
+            <option value="Regular">Regular ($5,000)</option>
+            <option value="VIP">VIP ($10,000)</option>
+        </select>
+        
+    <button type="button" onclick="eliminarPersona(this)" style="background-color: #3e8914; color: #e8fccf;">Eliminar</button>
+    `;
+    
+    personasDiv.appendChild(nuevaPersona);
+    contadorPersonas++;
+    actualizarContador();
+}
+
+function eliminarPersona(boton) {
+    if (contadorPersonas <= 1) {
+        alert('Debe haber al menos una persona');
+        return;
+    }
+    
+    boton.parentElement.remove();
+    contadorPersonas--;
+    actualizarContador();
+}
+
+function actualizarContador() {
+    document.getElementById('contador').textContent = `Personas: ${contadorPersonas}/10`;
+}
+</script>
+{% endblock %}
