@@ -1,4 +1,4 @@
-from src.clases.TipoEntrada import TipoEntrada
+from .TipoEntrada import TipoEntrada
 from datetime import date as Date
 EDAD_INFANTE_MAX = 3
 EDAD_NINO_MAX = 15

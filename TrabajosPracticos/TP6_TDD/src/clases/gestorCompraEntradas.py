@@ -1,5 +1,5 @@
 from datetime import date, timedelta
-from src.clases.entradasclase import Entrada
+from .entradasclase import Entrada
 # --- Definición de Excepciones ---
 class ParqueError(Exception): pass
 class ParqueCerradoError(ParqueError): pass

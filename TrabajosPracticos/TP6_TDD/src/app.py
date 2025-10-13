@@ -5,9 +5,12 @@ import os
 
 # Agregar la carpeta src al path para importar entradas
 sys.path.append(os.path.dirname(__file__))
-from src.clases.entradas import comprar_entradas, ParqueError
+from clases.gestorCompraEntradas import GestorCompraEntradas, ParqueError
 
 app = Flask(__name__)
+
+# Crear instancia del gestor
+gestor = GestorCompraEntradas()
 
 @app.route('/')
 def inicio():
@@ -28,10 +31,14 @@ def procesar_compra():
         fecha_visita = date.fromisoformat(fecha_str)
         def enviar_email_web(email, datos):
             print(f"Email enviado a {email}: {datos}")
-        resultado = comprar_entradas(
+        
+        # Crear entradas usando el gestor
+        entradas = gestor.crear_entrada(tipos_pase, fecha_visita, edades)
+        
+        resultado = gestor.comprar_entradas(
             fecha_visita=fecha_visita,
             edades=edades,
-            tipos_pase=tipos_pase,
+            entradas=entradas,
             forma_pago=forma_pago,
             email=email,
             enviar_email=enviar_email_web
@@ -47,10 +54,14 @@ def api_comprar():
     try:
         data = request.get_json()
         fecha_visita = date.fromisoformat(data['fecha_visita'])
-        resultado = comprar_entradas(
+        
+        # Crear entradas usando el gestor
+        entradas = gestor.crear_entrada(data['tipos_pase'], fecha_visita, data['edades'])
+        
+        resultado = gestor.comprar_entradas(
             fecha_visita=fecha_visita,
             edades=data['edades'],
-            tipos_pase=data['tipos_pase'],
+            entradas=entradas,
             forma_pago=data['forma_pago'],
             email=data['email']
         )
