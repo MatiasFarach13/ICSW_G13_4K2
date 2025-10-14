@@ -21,14 +21,15 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 
 - ICSW_G13_4K2
     - TrabajosPracticos
+        - TP6_TDD  
     - Teorico
         - PresentacionesDeClase
         - Bibliografia
     - Parciales
         - Parcial1
-            - Templates
+          - Enunciados Parciales Viejos
         - Parcial2
-            - Templates
+          - Enunciados Parciales Viejos
     - Planificacion
 
 ---
@@ -37,19 +38,19 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 
 | Nombre ítem configuración                  | Regla de nombrado                                         | Ubicación física                                                           | Tipo de ítem          |
 |--------------------------------------------|-----------------------------------------------------------|----------------------------------------------------------------------------|-----------------------|
-| Enunciados de Trabajos Prácticos           | TPs_Enunciados.pdf                                        | ICSW_G13_4K2/TrabajosPracticos/                                            | Trabajo Práctico      |
-| Resolución de Trabajo Práctico             | TP&lt;Numero&gt;&lt;Nombre&gt;_Resolucion.pdf               | ICSW_G13_4K2/TrabajosPracticos/                 | Trabajo Práctico      |
-| Presentaciones de clase                    | &lt;NumeroDeClase&gt;_&lt;NombreTema&gt;.pdf             | ICSW_G13_4K2/Teorico/PPT/                                                  | Teórico               |
-| Bibliografía                               | ICSW_Bibliografia_&lt;Nombre&gt;.pdf                      | ICSW_G13_4K2/Teorico/Bibliografia/                                         | Teórico               |
-| Enunciados de Trabajos de investigación    | TPsInvestigacion_Enunciados.pdf                            | ICSW_G13_4K2/TrabajosPracticos/                                            | Trabajo Práctico      |
-| Guía de Ejercicios Prácticos Resueltos     | EjerciciosPracticosResueltos.pdf                          | ICSW_G13_4K2/TrabajosPracticos/                                            | Trabajo Práctico      |
-| Enunciado de parcial                       | Parcial&lt;Numero&gt;_Enunciado.pdf                       | ICSW_G13_4K2/Parciales/                                                    | Parciales             |
-| Herramientas para parciales |                Parcial_Herramientas.pdf                            | ICSW_G13_4K2/Parciales/                                                          | Parciales             |
-| Planificación de la materia                | PlanificacionICSW.pdf                                     | ICSW_G13_4K2/Planificacion/                                                | Planificación         |
-| Cronograma de la materia                   | CronogramaICSW.pdf                                        | ICSW_G13_4K2/Planificacion/                                                | Planificación         |
-| Template para parcial                      | Parcial&lt;Numero&gt;_TemplateParcial.docx                | ICSW_G13_4K2/Parciales/Parcial&lt;Numero&gt;/Templates/                    | Templates             |
-| Template para práctico                     | Parcial&lt;Numero&gt;_Tempate&lt;NombreCaso&gt;.&lt;extension&gt; | ICSW_G13_4K2/Parciales/Parcial&lt;Numero&gt;/Templates/                    | Templates             |
-| Plan de Configuración                      | ICSW_PlanDeGestionDeConfiguracion_G13                     | ICSW_G13_4K2/                                                               | Plan de Configuración |
+| Enunciados de Trabajos Prácticos           | `TPs_Enunciados.pdf`                                        | ICSW_G13_4K2/TrabajosPracticos/                                            | Trabajo Práctico      |
+| Resolución de Trabajo Práctico             | `TP<Numero>_<Nombre>_Resolucion.pdf`               | ICSW_G13_4K2/TrabajosPracticos/                 | Trabajo Práctico      |
+| Presentaciones de clase                    | `<NumeroDeClase>_<NombreTema>.pdf`             | ICSW_G13_4K2/Teorico/PPT/                                                  | Teórico               |
+| Bibliografía                               | `ICSW_Bibliografia_<Nombre>.pdf`                      | ICSW_G13_4K2/Teorico/Bibliografia/                                         | Teórico               |
+| Enunciados de Trabajos de investigación    | `TPsInvestigacion_Enunciados.pdf`                            | ICSW_G13_4K2/TrabajosPracticos/                                            | Trabajo Práctico      |
+| Guía de Ejercicios Prácticos Resueltos     | `EjerciciosPracticosResueltos.pdf`                          | ICSW_G13_4K2/TrabajosPracticos/                                            | Trabajo Práctico      |
+| Enunciado de parcial viejo                 | `<Año>_Parcial<Numero>_<Titulo>.pdf`                       | ICSW_G13_4K2/Parciales/Parcial&lt;Numero&gt;/EnunciadoParcialesViejos/                                                    | Parciales             |
+| Resumen de parcial                 | `Resumen_Parcial<Numero>.pdf`                       | ICSW_G13_4K2/Parciales/Parcial&lt;Numero&gt;/                                                    | Parciales             |
+| Herramientas para parciales |                `Parcial_Herramientas.pdf`                            | ICSW_G13_4K2/Parciales/                                                          | Parciales             |
+| Planificación de la materia                | `PlanificacionICSW.pdf`                                     | ICSW_G13_4K2/Planificacion/                                                | Planificación         |
+| Cronograma de la materia                   | `CronogramaICSW.pdf`                                        | ICSW_G13_4K2/Planificacion/                                                | Planificación         |
+| Template para parcial                      | `Parcial<Numero>_TemplateParcial.<extension>`                | ICSW_G13_4K2/Parciales/Parcial&lt;Numero&gt;/                   | Templates             |
+| Plan de Configuración                      | `ICSW_PlanDeGestionDeConfiguracion_G13.pdf `                    | ICSW_G13_4K2/                                                               | Plan de Configuración |
 
 ---
 
@@ -77,3 +78,4 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 | < NombreCaso > | Nombre del caso práctico o de estudio |
 | < extension > | Extensión del archivo (ej. .pdf, .docx, .pptx) |
 | Templates	| Archivos modelo que sirven como base para completar entregables|
+| TDD	| Test Driven Development|
