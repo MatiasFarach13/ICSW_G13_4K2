@@ -13,7 +13,7 @@
     <p><strong>Estado:</strong> {{ resultado.status.title() }}</p>
     <p><strong>Fecha de Visita:</strong> {{ resultado.fecha }}</p>
     <p><strong>Cantidad de Entradas:</strong> {{ resultado.cantidad }}</p>
-    <p><strong>Total Pagado:</strong> ${{ "{:,".format(resultado.total_pagado) }}</p>
+    <p><strong>Total Pagado:</strong> ${{ "{:,}".format(resultado.total_pagado) }}</p>
     <p><strong>Email de Confirmación:</strong> {{ resultado.email }}</p>
 </div>
 

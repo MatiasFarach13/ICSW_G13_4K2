@@ -7,3 +7,5 @@ venv/
 *.pyc
 *.pyo
 *.pyd
+.venv/
+.idea/

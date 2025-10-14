@@ -9,13 +9,14 @@ class Entrada:
     tipo_entrada: TipoEntrada
     fecha_visita: Date
     categoria_edad: str
+    precio: float
     
     #init
     def __init__(self, nombre_tipo, fecha_visita, edad):
         self.tipo_entrada = self.crear_tipo_entrada(nombre_tipo)
         self.fecha_visita = fecha_visita
-        print(f"mi edad es: {edad}")
         self.categoria_edad = self.determinar_categoria_edad(edad)
+        self.precio = self.calcular_precio(edad)
 
     #metodos
     def calcular_precio(self, edad):

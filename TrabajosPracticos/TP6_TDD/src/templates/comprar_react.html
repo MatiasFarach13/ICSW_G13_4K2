@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block title %}Comprar Entradas (React){% endblock %}
+
+{% block content %}
+<h2 style="color: #134611;">🎫 Comprar Entradas (React)</h2>
+
+<div id="react-root"></div>
+
+<!-- React + Babel por CDN para no cambiar la estructura del proyecto -->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+{% raw %}
+<script type="text/babel">
+  const { useState } = React;
+
+  function CompraEntradas() {
+    const hoy = new Date();
+    const min = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 1)
+      .toISOString().slice(0,10);
+    const max = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 30)
+      .toISOString().slice(0,10);
+
+    const [fechaVisita, setFechaVisita] = useState("");
+    const [email, setEmail] = useState("");
+    const [formaPago, setFormaPago] = useState("");
+    const [personas, setPersonas] = useState([{ edad: "", tipo_pase: "Regular" }]);
+    const [enviando, setEnviando] = useState(false);
+    const [resultado, setResultado] = useState(null);
+    const [error, setError] = useState("");
+
+    const agregarPersona = () => {
+      if (personas.length >= 10) { alert('Máximo 10 entradas por compra'); return; }
+      setPersonas([...personas, { edad: "", tipo_pase: "Regular" }]);
+    };
+
+    const eliminarPersona = (idx) => {
+      if (personas.length <= 1) { alert('Debe haber al menos una persona'); return; }
+      setPersonas(personas.filter((_, i) => i !== idx));
+    };
+
+    const actualizarPersona = (idx, campo, valor) => {
+      const copia = personas.slice();
+      copia[idx] = { ...copia[idx], [campo]: valor };
+      setPersonas(copia);
+    };
+
+    const onSubmit = async (e) => {
+      e.preventDefault();
+      setError("");
+      setResultado(null);
+      setEnviando(true);
+      try {
+        const edades = personas.map(p => parseInt(p.edad || 0, 10));
+        const tipos_pase = personas.map(p => p.tipo_pase);
+
+        const resp = await fetch('/api/comprar', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fecha_visita: fechaVisita, // ISO yyyy-mm-dd como espera tu API actual
+            forma_pago: formaPago,
+            edades,
+            tipos_pase,
+            email
+          })
+        });
+        const data = await resp.json();
+        if (!resp.ok || !data.success) {
+          throw new Error(data.error || 'Error procesando la compra');
+        }
+        setResultado(data.resultado);
+        try {
+          sessionStorage.setItem('compra_resultado', JSON.stringify(data.resultado));
+        } catch (e) {
+          console.warn('No se pudo guardar resultado en sessionStorage', e);
+        }
+        // Redirigir a confirmación React
+        window.location.href = '/confirmacion-react';
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setEnviando(false);
+      }
+    };
+
+    return (
+      <div>
+        {error && (
+          <div className="error">{error}</div>
+        )}
+        {resultado ? (
+          <div className="success">
+            <h3>✅ Compra Confirmada</h3>
+            <p><strong>Estado:</strong> {resultado.status}</p>
+            <p><strong>Fecha de Visita:</strong> {resultado.fecha}</p>
+            <p><strong>Cantidad:</strong> {resultado.cantidad}</p>
+            <p><strong>Total Pagado:</strong> ${'{'}resultado.total_pagado{'}'}</p>
+            <p><strong>Email:</strong> {resultado.email}</p>
+          </div>
+        ) : (
+          <form onSubmit={onSubmit}>
+            <div style={{ margin: '20px 0' }}>
+              <label><strong>Fecha de Visita:</strong></label><br />
+              <input type="date" required min={min} max={max}
+                     value={fechaVisita}
+                     onChange={e => setFechaVisita(e.target.value)} />
+            </div>
+
+            <div style={{ margin: '20px 0' }}>
+              <label><strong>Email:</strong></label><br />
+              <input type="email" required placeholder="tu@email.com"
+                     value={email}
+                     onChange={e => setEmail(e.target.value)} />
+            </div>
+
+            <div style={{ margin: '20px 0' }}>
+              <label><strong>Forma de Pago:</strong></label><br />
+              <select required value={formaPago} onChange={e => setFormaPago(e.target.value)}>
+                <option value="">Seleccione...</option>
+                <option value="MercadoPago">MercadoPago</option>
+                <option value="Tarjeta">Tarjeta de Crédito</option>
+                <option value="Transferencia">Transferencia</option>
+              </select>
+            </div>
+
+            <div style={{ margin: '20px 0' }}>
+              <h3>Personas</h3>
+              {personas.map((p, idx) => (
+                <div key={idx} className="persona" style={{ border: '1.5px solid #3da35d', padding: 15, margin: '10px 0', borderRadius: 4, backgroundColor: '#e8fccf', color: '#134611' }}>
+                  <label>Edad:</label>
+                  <input type="number" min="0" max="120" required
+                         value={p.edad}
+                         onChange={e => actualizarPersona(idx, 'edad', e.target.value)} />
+                  <label style={{ marginLeft: 10 }}>Tipo de Pase:</label>
+                  <select value={p.tipo_pase} onChange={e => actualizarPersona(idx, 'tipo_pase', e.target.value)}>
+                    <option value="Regular">Regular ($5,000)</option>
+                    <option value="VIP">VIP ($10,000)</option>
+                  </select>
+                  <button type="button" onClick={() => eliminarPersona(idx)} style={{ marginLeft: 10 }}>Eliminar</button>
+                </div>
+              ))}
+              <button type="button" onClick={agregarPersona}>➕ Agregar Persona</button>
+              <span style={{ marginLeft: 10 }}>Personas: {personas.length}/10</span>
+            </div>
+
+            <div style={{ textAlign: 'center', margin: '30px 0' }}>
+              <button type="submit" disabled={enviando}>
+                {enviando ? 'Procesando...' : '💳 Procesar Compra'}
+              </button>
+              <a href="/" style={{ marginLeft: 10 }}><button type="button">🔙 Volver</button></a>
+            </div>
+          </form>
+        )}
+      </div>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById('react-root'));
+  root.render(<CompraEntradas />);
+</script>
+{% endraw %}
+{% endblock %}

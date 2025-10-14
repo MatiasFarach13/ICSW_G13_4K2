@@ -73,18 +73,15 @@ function agregarPersona() {
     const nuevaPersona = document.createElement('div');
     nuevaPersona.className = 'persona';
     nuevaPersona.style = 'border: 1.5px solid #3da35d; padding: 15px; margin: 10px 0; border-radius: 4px; background-color: #e8fccf; color: #134611;';
-    nuevaPersona.innerHTML = `
-        <label>Edad:</label>
-        <input type="number" name="edades" min="0" max="120" required>
-        
-        <label>Tipo de Pase:</label>
-        <select name="tipos_pase" required>
-            <option value="Regular">Regular ($5,000)</option>
-            <option value="VIP">VIP ($10,000)</option>
-        </select>
-        
-    <button type="button" onclick="eliminarPersona(this)" style="background-color: #3e8914; color: #e8fccf;">Eliminar</button>
-    `;
+    nuevaPersona.innerHTML = 
+        '<label>Edad:</label>' +
+        '<input type="number" name="edades" min="0" max="120" required>' +
+        '<label>Tipo de Pase:</label>' +
+        '<select name="tipos_pase" required>' +
+            '<option value="Regular">Regular ($5,000)</option>' +
+            '<option value="VIP">VIP ($10,000)</option>' +
+        '</select>' +
+        '<button type="button" onclick="eliminarPersona(this)" style="background-color: #3e8914; color: #e8fccf;">Eliminar</button>';
     
     personasDiv.appendChild(nuevaPersona);
     contadorPersonas++;
@@ -103,7 +100,7 @@ function eliminarPersona(boton) {
 }
 
 function actualizarContador() {
-    document.getElementById('contador').textContent = `Personas: ${contadorPersonas}/10`;
+    document.getElementById('contador').textContent = 'Personas: ' + contadorPersonas + '/10';
 }
 </script>
 {% endblock %}

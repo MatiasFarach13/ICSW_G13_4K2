@@ -20,6 +20,16 @@ def inicio():
 def comprar():
     return render_template('comprar.html', date=date, timedelta=timedelta)
 
+@app.route('/comprar-react')
+def comprar_react():
+    """Versión React del formulario de compra (sin cambiar estructura)."""
+    return render_template('comprar_react.html')
+
+@app.route('/confirmacion-react')
+def confirmacion_react():
+    """Pantalla de confirmación implementada en React."""
+    return render_template('confirmacion_react.html')
+
 @app.route('/procesar_compra', methods=['POST'])
 def procesar_compra():
     try:
@@ -47,6 +57,10 @@ def procesar_compra():
     except ParqueError as e:
         return render_template('error.html', error=str(e))
     except Exception as e:
+        import traceback
+        print("=== ERROR COMPLETO ===")
+        print(traceback.format_exc())
+        print("=== FIN ERROR ===")
         return render_template('error.html', error=f"Error inesperado: {str(e)}")
 
 @app.route('/api/comprar', methods=['POST'])

@@ -1,0 +1,10 @@
+{
+  "name": "tp6_tdd",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "./venv/bin/python src/app.py",
+    "start:flask": "FLASK_APP=src/app.py FLASK_ENV=development ./venv/bin/flask run --reload",
+    "test": "./venv/bin/python -m pytest -q"
+  }
+}
