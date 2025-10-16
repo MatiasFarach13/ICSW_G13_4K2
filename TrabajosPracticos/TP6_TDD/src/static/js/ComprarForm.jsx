@@ -57,13 +57,12 @@ const ComprarForm = () => {
         setError('');
 
         try {
-            const requestData = {
-                fecha_visita: formData.fecha_visita,
-                email: formData.email,
-                forma_pago: formData.forma_pago,
-                edades: formData.personas.map(p => parseInt(p.edad)),
-                tipos_pase: formData.personas.map(p => p.tipo_pase)
-            };
+                const requestData = {
+                    fecha_visita: formData.fecha_visita,
+                    forma_pago: formData.forma_pago,
+                    edades: formData.personas.map(p => parseInt(p.edad)),
+                    tipos_pase: formData.personas.map(p => p.tipo_pase)
+                };
 
             const response = await fetch('/api/comprar', {
                 method: 'POST',
@@ -140,22 +139,7 @@ const ComprarForm = () => {
         ]),
 
         // Email
-        React.createElement('div', { key: 'email-div', style: { margin: '20px 0' } }, [
-            React.createElement('label', { 
-                key: 'email-label',
-                style: { color: '#3e8914', fontWeight: 'bold', display: 'block' }
-            }, 'Email:'),
-            React.createElement('input', {
-                key: 'email-input',
-                type: 'email',
-                name: 'email',
-                value: formData.email,
-                onChange: handleInputChange,
-                placeholder: 'tu@email.com',
-                required: true,
-                style: { padding: '8px', margin: '5px', border: '1px solid #3da35d', borderRadius: '4px', backgroundColor: '#e8fccf', color: '#134611' }
-            })
-        ]),
+        // Email removed from form; server will deduce from logged-in user when available
 
         // Forma de pago
         React.createElement('div', { key: 'pago-div', style: { margin: '20px 0' } }, [
@@ -172,9 +156,8 @@ const ComprarForm = () => {
                 style: { padding: '8px', margin: '5px', border: '1px solid #3da35d', borderRadius: '4px', backgroundColor: '#e8fccf', color: '#134611' }
             }, [
                 React.createElement('option', { key: 'empty', value: '' }, 'Seleccione...'),
-                React.createElement('option', { key: 'mp', value: 'MercadoPago' }, 'MercadoPago'),
                 React.createElement('option', { key: 'tc', value: 'Tarjeta' }, 'Tarjeta de Crédito'),
-                React.createElement('option', { key: 'transf', value: 'Transferencia' }, 'Transferencia')
+                React.createElement('option', { key: 'transf', value: 'Efectivo' }, 'Efectivo (pago en boletería)')
             ])
         ]),
 

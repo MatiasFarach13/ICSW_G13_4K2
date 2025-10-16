@@ -1,133 +1,57 @@
-# TP6 - Test Driven Development (TDD)
+# TP6 - Sistema de Compra de Entradas
 
-## Descripción
-Sistema de compra de entradas para un parque temático desarrollado aplicando metodología TDD (Test Driven Development). El proyecto incluye validaciones de negocio, cálculo de precios con descuentos por edad, y una interfaz gráfica desarrollada con PyQt5.
+Breve guía para ejecutar, probar y preparar este repositorio para push.
 
-## Características del Sistema
-
-### Reglas de Negocio
-- **Tipos de pase**: VIP ($10,000) y Regular ($5,000)
-- **Descuentos por edad**:
-  - Infantes (≤3 años): Gratis
-  - Niños (4-15 años): 50% descuento
-  - Seniors (≥60 años): 50% descuento
-- **Restricciones**:
-  - Máximo 10 entradas por compra
-  - Compra hasta 30 días de anticipación
-  - Parque cerrado los lunes y feriados (25/12, 1/1)
-
-### Funcionalidades
-- Validación de fechas de visita
-- Cálculo automático de precios con descuentos
-- Validación de formas de pago
-- Interfaz gráfica intuitiva
-- Sistema de confirmación por email
-
-## Estructura del Proyecto
-
-```
-TP6_TDD/
-├── src/
-│   ├── entradas.py          # Lógica principal del sistema
-│   ├── main.py             # Aplicación principal con interfaz gráfica
-│   ├── core/
-│   │   └── utilidades.py   # Utilidades y estilos
-│   └── paginas/
-│       ├── PaginaInicio.py
-│       ├── PaginaComprar.py
-│       ├── PaginaConfirmacion.py
-│       └── ...
-├── tests/
-│   └── test_compra_entradas.py  # Suite completa de pruebas
-├── recursos/
-│   ├── estilo_claro.qss    # Estilos CSS para tema claro
-│   └── estilo_oscuro.qss   # Estilos CSS para tema oscuro
-├── requirements.txt        # Dependencias del proyecto
-└── README.md              # Este archivo
-```
+## Resumen
+Proyecto de ejemplo para la compra de entradas con reglas de negocio y una pequeña API/plantillas web.
 
 ## Requisitos
+- Python 3.11+
+- Virtualenv
 
-- Python 3.8+
-- PyQt5
-- pytest (para ejecutar las pruebas)
-
-## Instalación y Configuración
-
-1. **Crear entorno virtual**:
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # En Linux/Mac
-   # venv\Scripts\activate  # En Windows
-   ```
-
-2. **Instalar dependencias**:
-   ```bash
-   pip install --upgrade pip
-   pip install -r requirements.txt
-   pip install pytest
-   ```
-
-## Uso
-
-### Ejecutar la aplicación
+## Instalación
 ```bash
-# Activar entorno virtual
+python3 -m venv venv
 source venv/bin/activate
-
-# Ejecutar la aplicación
-python src/main.py
+pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
-### Ejecutar las pruebas
+## Ejecutar la aplicación (recomendado)
+Ejecutar en modo paquete para que las importaciones relativas funcionen correctamente:
+
 ```bash
-# Desde la raíz del proyecto
-pytest tests/ -v
-
-# O usando PYTHONPATH para las importaciones
-PYTHONPATH=src pytest tests/ -v
+export DATABASE_URL="sqlite:///./data.db"  # opcional, por defecto usa data.db
+python -m src.app
 ```
 
-## Metodología TDD
+La aplicación estará disponible en http://localhost:5000
 
-Este proyecto fue desarrollado siguiendo la metodología **Test Driven Development**:
+## Usuarios seed (archivo DB solamente)
+Al crear una base de datos en archivo (no en memoria) el sistema crea dos usuarios de ejemplo:
 
-1. **Red**: Escribir una prueba que falle
-2. **Green**: Escribir el código mínimo para que pase
-3. **Refactor**: Mejorar el código manteniendo las pruebas verdes
+- juan@example.com / juanpass
+- ana@example.com / anapass
 
-### Cobertura de Pruebas
+Estos son para desarrollo y pruebas; cámbialos o elimínalos antes de producción.
 
-Las pruebas cubren:
-- ✅ Casos de compra exitosa
-- ✅ Validaciones de fecha (pasado, futuro lejano, lunes, feriados)
-- ✅ Validaciones de cantidad (límites 1-10)
-- ✅ Validaciones de pago
-- ✅ Cálculo correcto de precios con descuentos
-- ✅ Manejo de excepciones personalizadas
+## Notas sobre Login
+- Visita `/login` e inicia sesión con email y contraseña.
+- Si el usuario no existía, se crea y la contraseña ingresada se guarda (con hashing).
+- Si el usuario existía, la contraseña se verifica.
+- No es seguro para producción (no hay registro formal, recuperación de contraseña ni CSRF en formularios).
 
-## Excepciones del Sistema
+## Flujo de compra
+- Debes iniciar sesión antes de comprar (las rutas principales requieren autenticación).
+- El campo email fue eliminado del formulario de compra en la UI: el sistema usa el email del usuario autenticado.
+- El sistema simula el envío de email (se imprime en la salida estándar) y muestra instrucciones de pago en la página de confirmación.
 
-- `ParqueError`: Base para errores del dominio
-- `ParqueCerradoError`: Parque cerrado por día o feriado
-- `PagoInvalidoError`: Forma de pago inválida
-- `CantidadInvalidaError`: Cantidad de entradas fuera de rango
-- `FechaInvalidaError`: Fecha de visita inválida
-
-## Contribución
-
-Este proyecto forma parte del Trabajo Práctico 6 de la materia **Ingeniería y Calidad de Software**.
-
-### Equipo de Desarrollo
-- Grupo 13 - 4K2
-
-## Notas del Desarrollo
-
-- Se aplicó TDD de forma estricta: todas las funcionalidades fueron desarrolladas primero escribiendo las pruebas.
-- La interfaz gráfica utiliza PyQt5 con soporte para temas claro y oscuro.
-- El sistema simula la generación de emails de confirmación.
-- Se implementaron validaciones robustas siguiendo las reglas de negocio especificadas.
+## Preparar para push (checklist)
+- [ ] Actualizar `data.db` si no quieres subir datos de prueba
+- [x] Añadir `.gitignore` para ignorar virtualenv, DB y artefactos
+- [x] Asegurarse de que `requirements.txt` contiene las dependencias
+- [ ] Actualizar `README.md` con cualquier instrucción adicional
 
 ---
 
-*Trabajo Práctico desarrollado para la materia Ingeniería y Calidad de Software - Universidad Tecnológica Nacional*
+Trabajo Práctico 6 - Grupo 13

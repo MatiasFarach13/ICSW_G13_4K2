@@ -23,6 +23,13 @@
     <p><em>Recuerda revisar tu bandeja de entrada y spam.</em></p>
 </div>
 
+{% if resultado.instrucciones_pago %}
+<div style="background-color: #e8fccf; color: #134611; padding: 15px; border-radius: 8px; margin: 20px 0; border: 1.5px solid #3e8914;">
+    <h4 style="color: #3e8914;">💳 Información de Pago</h4>
+    <p>{{ resultado.instrucciones_pago }}</p>
+</div>
+{% endif %}
+
 <div style="background-color: #96e072; color: #134611; padding: 15px; border-radius: 8px; margin: 20px 0; border: 1.5px solid #3e8914;">
     <h4 style="color: #3e8914;">📝 Instrucciones Importantes</h4>
     <ul>

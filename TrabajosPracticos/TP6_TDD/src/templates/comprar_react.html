@@ -24,7 +24,7 @@
       .toISOString().slice(0,10);
 
     const [fechaVisita, setFechaVisita] = useState("");
-    const [email, setEmail] = useState("");
+  // email is deduced from logged-in user; not collected in the React form
     const [formaPago, setFormaPago] = useState("");
     const [personas, setPersonas] = useState([{ edad: "", tipo_pase: "Regular" }]);
     const [enviando, setEnviando] = useState(false);
@@ -59,12 +59,11 @@
         const resp = await fetch('/api/comprar', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
+            body: JSON.stringify({
             fecha_visita: fechaVisita, // ISO yyyy-mm-dd como espera tu API actual
             forma_pago: formaPago,
             edades,
-            tipos_pase,
-            email
+            tipos_pase
           })
         });
         const data = await resp.json();
@@ -109,20 +108,14 @@
                      onChange={e => setFechaVisita(e.target.value)} />
             </div>
 
-            <div style={{ margin: '20px 0' }}>
-              <label><strong>Email:</strong></label><br />
-              <input type="email" required placeholder="tu@email.com"
-                     value={email}
-                     onChange={e => setEmail(e.target.value)} />
-            </div>
+            { /* Email removed from form; server deduces from logged-in user */ }
 
             <div style={{ margin: '20px 0' }}>
               <label><strong>Forma de Pago:</strong></label><br />
               <select required value={formaPago} onChange={e => setFormaPago(e.target.value)}>
                 <option value="">Seleccione...</option>
-                <option value="MercadoPago">MercadoPago</option>
                 <option value="Tarjeta">Tarjeta de Crédito</option>
-                <option value="Transferencia">Transferencia</option>
+                <option value="Efectivo">Efectivo (pago en boletería)</option>
               </select>
             </div>
 

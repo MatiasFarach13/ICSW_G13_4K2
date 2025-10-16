@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Ecoharmonypark{% endblock %}
+
+{% block content %}
+<h2>Iniciar sesión</h2>
+<form method="post">
+  <label>Email:<br>
+    <input type="email" name="email" required>
+  </label><br>
+  <label>Contraseña:<br>
+    <input type="password" name="password" required>
+  </label><br>
+  <button type="submit">Ingresar</button>
+</form>
+{% endblock %}

@@ -44,7 +44,7 @@ def test_compra_hoy_parcheado():
                     fecha_visita=fecha_simulada,
                     edades=edades,
                     entradas=entradas,
-                    forma_pago="MercadoPago",
+                    forma_pago="Tarjeta",
                     email="valido@example.com"
                 )
         else:
@@ -52,7 +52,7 @@ def test_compra_hoy_parcheado():
                 fecha_visita=fecha_simulada,
                 edades=edades,
                 entradas=entradas,
-                forma_pago="MercadoPago",
+                forma_pago="Tarjeta",
                 email="valido@example.com"
             )
             assert resultado["status"] == "confirmado"
@@ -77,7 +77,7 @@ def test_compra_exitosa_con_fecha_valida_parcheada():
             fecha_visita=fecha_abierta,
             edades=edades,
             entradas=entradas,
-            forma_pago="MercadoPago",
+            forma_pago="Tarjeta",
             email="valido@example.com"
         )
         assert resultado["status"] == "confirmado"
@@ -99,7 +99,7 @@ def test_compra_con_tipos_combinados_y_varias_edades_parcheada():
             fecha_visita=fecha_valida,
             edades=edades,
             entradas=entradas,
-            forma_pago="MercadoPago",
+            forma_pago="Tarjeta",
             email="valido@example.com"
         )
         assert resultado["status"] == "confirmado"
@@ -113,8 +113,8 @@ def test_dos_compras_en_el_mismo_dia():
     fecha_visita = proxima_fecha_valida()
     # creacion de entradas
     entradas = gestor.crear_entrada(tipos, fecha_visita, edades)
-    compra1 = gestor.comprar_entradas(fecha_visita, edades, entradas, "MercadoPago", email="valido@example.com")
-    compra2 = gestor.comprar_entradas(fecha_visita, edades, entradas, "MercadoPago", email="valido@example.com")
+    compra1 = gestor.comprar_entradas(fecha_visita, edades, entradas, "Tarjeta", email="valido@example.com")
+    compra2 = gestor.comprar_entradas(fecha_visita, edades, entradas, "Tarjeta", email="valido@example.com")
     assert compra1["status"] == compra2["status"] == "confirmado"
     assert compra1["cantidad"] == compra2["cantidad"] == 10
 
@@ -129,7 +129,7 @@ def test_envio_email_confirmacion():
         fecha_visita=fecha_visita,
         edades=edades,
         entradas=entradas,
-        forma_pago="MercadoPago",
+        forma_pago="Tarjeta",
         email="valido@example.com",
         enviar_email=mock_enviar
     )
@@ -149,7 +149,7 @@ def test_compra_dia_anterior():
             fecha_visita=fecha_simulada,
             edades=edades,
             entradas=entradas,
-            forma_pago="MercadoPago",
+            forma_pago="Tarjeta",
             email="valido@example.com"
         )
 
@@ -164,7 +164,7 @@ def test_compra_mas_de_30_dias():
             fecha_visita=fecha_visita,
             edades=edades,
             entradas=entradas,
-            forma_pago="MercadoPago",
+            forma_pago="Tarjeta",
             email="valido@example.com"
         )
 
@@ -183,7 +183,7 @@ def test_compra_para_feriado():
                 fecha_visita=fecha_visita,
                 edades=edades,
                 entradas=entradas,
-                forma_pago="MercadoPago",
+                forma_pago="Tarjeta",
                 email="valido@example.com"
             )
 
@@ -202,7 +202,7 @@ def test_compra_para_lunes():
                 fecha_visita=fecha_visita,
                 edades=edades,
                 entradas=entradas,
-                forma_pago="MercadoPago",
+                forma_pago="Tarjeta",
                 email="valido@example.com"
             )
 
@@ -217,7 +217,7 @@ def test_compra_mas_de_10_entradas():
             fecha_visita=fechas_visita,
             edades=edades,
             entradas=entradas,
-            forma_pago="MercadoPago",
+            forma_pago="Tarjeta",
             email="valido@example.com"
         )
 
@@ -247,7 +247,7 @@ def test_compra_email_invalido():
             fecha_visita=fecha_visita,
             edades=edades,
             entradas=entradas,
-            forma_pago="MercadoPago",
+            forma_pago="Tarjeta",
             email="email_invalido"
         )
 
@@ -262,7 +262,7 @@ def test_compra_email_vacio():
             fecha_visita=fecha_visita,
             edades=edades,
             entradas=entradas,
-            forma_pago="MercadoPago",
+            forma_pago="Tarjeta",
             email=""
         )
 
@@ -277,6 +277,6 @@ def test_compra_email_sin_arroba():
             fecha_visita=fecha_visita,
             edades=edades,
             entradas=entradas,
-            forma_pago="MercadoPago",
+            forma_pago="Tarjeta",
             email="email.invalido.com"
         )

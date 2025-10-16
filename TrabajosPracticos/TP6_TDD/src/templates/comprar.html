@@ -14,18 +14,14 @@
                max="{{ (date.today() + timedelta(days=30)).isoformat() }}">
     </div>
 
-    <div style="margin: 20px 0;">
-        <label for="email" style="color: #3e8914;"><strong>Email:</strong></label><br>
-        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
-    </div>
+    {# Email is deduced from logged-in user; if not logged-in a JS/legacy form may still supply an email via POST #}
 
     <div style="margin: 20px 0;">
         <label for="forma_pago" style="color: #3e8914;"><strong>Forma de Pago:</strong></label><br>
         <select id="forma_pago" name="forma_pago" required>
             <option value="">Seleccione...</option>
-            <option value="MercadoPago">MercadoPago</option>
             <option value="Tarjeta">Tarjeta de Crédito</option>
-            <option value="Transferencia">Transferencia</option>
+            <option value="Efectivo">Efectivo (pago en boletería)</option>
         </select>
     </div>
 
