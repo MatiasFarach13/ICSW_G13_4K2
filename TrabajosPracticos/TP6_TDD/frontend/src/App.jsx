@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate
+  Navigate,
 } from "react-router-dom";
 
 import BaseLayout from "./components/BaseLayout";
@@ -12,6 +12,9 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Comprar from "./pages/Comprar";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import ConfirmarCompra from "./pages/ConfirmarCompra";
+import ConfirmacionEfectivo from "./pages/ConfirmacionEfectivo";
+import ConfirmacionTarjeta from "./pages/ConfirmacionTarjeta";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -19,8 +22,11 @@ export default function App() {
   // ✅ Al montar la app, verificamos si hay token guardado
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) {
-      setUser({ isAuthenticated: true });
+    const userData = localStorage.getItem("user");
+
+    if (token && userData) {
+      const parsedUser = JSON.parse(userData);
+      setUser({ isAuthenticated: true, email: parsedUser.email });
     } else {
       setUser({ isAuthenticated: false });
     }
@@ -30,7 +36,7 @@ export default function App() {
     <Router>
       <BaseLayout user={user} setUser={setUser}>
         <Routes>
-          {/* 🔐 Ruta raíz: si no está autenticado, redirige a /login */}
+          {/* 🏠 Página principal (redirige al login si no está autenticado) */}
           <Route
             path="/"
             element={
@@ -42,11 +48,11 @@ export default function App() {
             }
           />
 
-          {/* 🧾 Login y registro */}
+          {/* 🔐 Login y registro */}
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register setUser={setUser} />} />
 
-          {/* 🎟️ Página protegida */}
+          {/* 🎟️ Comprar entradas (solo si está autenticado) */}
           <Route
             path="/comprar"
             element={
@@ -55,6 +61,15 @@ export default function App() {
               </ProtectedRoute>
             }
           />
+
+          {/* Simulacion mercado pago */}
+          <Route path="/confirmar-compra" element={<ConfirmarCompra />} />
+
+          {/* 💵 Confirmación de pago en efectivo */}
+          <Route path="/confirmacion-efectivo" element={<ConfirmacionEfectivo />} />
+
+          {/* 💚 Confirmación de pago con tarjeta */}
+          <Route path="/confirmacion-tarjeta" element={<ConfirmacionTarjeta />} />
 
           {/* 🚧 Rutas no válidas → redirige al login */}
           <Route path="*" element={<Navigate to="/login" replace />} />

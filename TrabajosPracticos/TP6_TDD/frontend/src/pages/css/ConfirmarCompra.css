@@ -1,0 +1,88 @@
+.confirmar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  background-color: #f2f2f2;
+  min-height: 100vh;
+}
+
+.confirmar-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  padding: 2rem 3rem;
+  width: 400px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  transition: transform 0.2s ease;
+}
+
+.confirmar-card:hover {
+  transform: scale(1.01);
+}
+
+.fecha-visita {
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.resumen {
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.resumen ul {
+  list-style: none;
+  padding: 0;
+}
+
+.resumen li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  color: #222;
+}
+
+.btn-pagar {
+  background: #00a650;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 25px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 2rem;
+  transition: all 0.3s ease;
+}
+
+.btn-pagar:hover {
+  background: #00c96a;
+  transform: translateY(-2px);
+}
+
+.btn-volver {
+  margin-top: 1rem;
+  border: none;
+  background: transparent;
+  color: #0077cc;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.btn-volver:hover {
+  color: #005fa3;
+}

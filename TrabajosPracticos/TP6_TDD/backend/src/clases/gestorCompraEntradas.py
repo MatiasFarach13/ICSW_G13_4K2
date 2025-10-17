@@ -55,10 +55,13 @@ class GestorCompraEntradas:
         return True
 
     def validar_edades(self, edades):
+        if not edades:
+            raise CantidadInvalidaError("Debe incluir al menos una edad.")
         for edad in edades:
-            if edad < 0:
-                raise EdadInvalidaError("La edad no puede ser negativa.")
+            if not isinstance(edad, int) or edad < 0:
+                raise CantidadInvalidaError("Cada edad debe ser un número positivo.")
         return True
+
     
     def validar_cantidad(self, cantidad):
         if 1<= cantidad <= 10:
@@ -67,9 +70,9 @@ class GestorCompraEntradas:
             raise CantidadInvalidaError("La cantidad de entradas debe ser entre 1 y 10.")
         
     def validar_forma_pago(self, forma_pago):
-            if forma_pago is None:
-                raise PagoInvalidoError("Debe seleccionar una forma de pago.")
-            return True
+        if forma_pago not in ["Efectivo", "Tarjeta"]:
+            raise PagoInvalidoError("Debe seleccionar una forma de pago válida (Efectivo o Tarjeta).")
+        return True
 
     def validar_fecha(self, fecha_visita):
         hoy = date.today()

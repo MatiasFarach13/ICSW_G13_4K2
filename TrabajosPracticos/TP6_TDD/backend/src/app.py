@@ -21,6 +21,12 @@ app.config["JWT_SECRET_KEY"] = os.environ.get("JWT_SECRET_KEY", "super-secret")
 CORS(app, supports_credentials=True)
 
 jwt = JWTManager(app)
+# 🔧 Ajuste para compatibilidad con Flask-JWT-Extended >= 4.7
+@jwt.user_identity_loader
+def user_identity_lookup(user_id):
+    # Se asegura de que siempre se use string como subject en el token
+    return str(user_id)
+
 gestor = GestorCompraEntradas()
 
 # Base de datos
@@ -142,18 +148,16 @@ def api_register():
 @app.route('/api/comprar', methods=['POST'])
 @jwt_required()
 def api_comprar():
-    """Compra de entradas protegida con JWT"""
     try:
         data = request.get_json()
+        print("🟢 Datos recibidos:", data)
         fecha_visita = date.fromisoformat(data['fecha_visita'])
         edades = data['edades']
         tipos_pase = data['tipos_pase']
         forma_pago = data['forma_pago']
         email = data.get('email')
 
-        # Crear entradas usando el gestor
         entradas = gestor.crear_entrada(tipos_pase, fecha_visita, edades)
-
         resultado = gestor.comprar_entradas(
             fecha_visita=fecha_visita,
             edades=edades,
@@ -162,44 +166,31 @@ def api_comprar():
             email=email
         )
 
-        # Agregar instrucciones simuladas
-        if forma_pago == 'Efectivo':
-            resultado['instrucciones_pago'] = 'Por favor, realizar el pago en boletería el día de la visita.'
-        elif forma_pago == 'Tarjeta':
-            resultado['instrucciones_pago'] = 'Integración MercadoPago simulada: pago procesado correctamente.'
-
-        # Guardar la compra en la base de datos
         session = get_session()
         if session is not None:
-            try:
-                from models import Compra
-                user_id = get_jwt_identity()
-                c = Compra(
-                    fecha=fecha_visita,
-                    cantidad=len(entradas),
-                    total=resultado['total_pagado'],
-                    forma_pago=forma_pago,
-                    user_id=user_id
-                )
-                session.add(c)
-                session.commit()
-            except Exception:
-                import traceback
-                print('❌ Error guardando compra:')
-                traceback.print_exc()
-            finally:
-                session.close()
+            from models import Compra
+            user_id = int(get_jwt_identity())
+            compra = Compra(
+                fecha=fecha_visita,
+                cantidad=len(entradas),
+                total=resultado['total_pagado'],
+                forma_pago=forma_pago,
+                user_id=user_id
+            )
+            session.add(compra)
+            session.commit()
+            session.close()
 
         return jsonify({"success": True, "resultado": resultado}), 200
 
     except ParqueError as e:
+        print("⚠️ Error de negocio:", e)
         return jsonify({"success": False, "error": str(e)}), 400
     except Exception as e:
         import traceback
-        print("=== ERROR COMPLETO ===")
+        print("❌ Error inesperado:")
         print(traceback.format_exc())
-        print("=== FIN ERROR ===")
-        return jsonify({"success": False, "error": f"Error inesperado: {str(e)}"}), 500
+        return jsonify({"success": False, "error": str(e)}), 500
 
 
 @app.route('/api/compras', methods=['GET'])
@@ -210,7 +201,7 @@ def api_list_compras():
     if session is None:
         return jsonify({'error': 'DB not available'}), 503
 
-    user_id = get_jwt_identity()
+    user_id = int(get_jwt_identity())
     try:
         from models import Compra
         compras = session.query(Compra).filter_by(user_id=user_id).all()
@@ -249,7 +240,7 @@ def api_list_users():
 @app.route('/api/protegida')
 @jwt_required()
 def api_protegida():
-    user_id = get_jwt_identity()
+    user_id = int(get_jwt_identity())
     return jsonify({"message": f"Ruta protegida. Usuario ID: {user_id}"})
 
 

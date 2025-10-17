@@ -22,8 +22,18 @@ export default function Login({ setUser }) {
       const data = await res.json();
       if (!data.success) throw new Error(data.error || "Error al iniciar sesión");
 
+      // 🔹 Limpiamos cualquier sesión previa
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+
+      // 🔹 Guardamos token y datos del usuario actual
       localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      // 🔹 Actualizamos estado global (si lo usás en App)
       setUser({ isAuthenticated: true, email: data.user.email });
+
+      // 🔹 Redirigimos al inicio
       navigate("/");
     } catch (err) {
       setError(err.message);

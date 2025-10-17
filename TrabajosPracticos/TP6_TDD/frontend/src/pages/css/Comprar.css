@@ -1,0 +1,214 @@
+.card-participante {
+  border: 2px solid #3da35d;
+  border-radius: 10px;
+  padding: 15px 20px;
+  background-color: #96e072;
+  margin-top: 15px;
+  color: #134611;
+  font-weight: 500;
+  box-shadow: 0 4px 8px rgba(19, 70, 17, 0.15);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.card-participante:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(19, 70, 17, 0.25);
+}
+
+/* Encabezado */
+.participante-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.participante-header h4 {
+  font-size: 1.1rem;
+  color: #134611;
+  margin: 0;
+}
+
+/* Switch */
+.switch-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.switch-label {
+  font-size: 0.9rem;
+  color: #134611;
+  font-weight: 600;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e8fccf;
+  border-radius: 24px;
+  transition: 0.3s;
+  border: 1px solid #3da35d;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 2.5px;
+  background-color: #3e8914;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.switch input:checked + .slider {
+  background-color: #3da35d;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(22px);
+  background-color: #e8fccf;
+}
+
+/* Inputs */
+.input-edad,
+.input-select {
+  margin-top: 5px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #3da35d;
+  background-color: #fafff0;
+  color: #134611;
+}
+
+.btn-eliminar {
+  background-color: #ff5959;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-weight: bold;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-eliminar:hover {
+  background-color: #cc2020;
+}
+
+/* === BOTÓN: Agregar participante === */
+.btn-agregar {
+  background-color: #3da35d;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 600;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-agregar:hover {
+  background-color: #2d8a4a;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(61, 163, 93, 0.4);
+}
+
+/* === FORMAS DE PAGO === */
+.forma-pago {
+  margin-top: 25px;
+  background-color: #e8fccf;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid #3da35d;
+  box-shadow: 0 2px 5px rgba(19, 70, 17, 0.1);
+}
+
+.forma-pago h3 {
+  color: #134611;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.pago-opciones {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-pago {
+  background-color: #96e072;
+  color: #134611;
+  border: 2px solid #3da35d;
+  border-radius: 8px;
+  padding: 8px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.btn-pago:hover {
+  background-color: #7bd154;
+  box-shadow: 0 3px 6px rgba(19, 70, 17, 0.25);
+  transform: translateY(-2px);
+}
+
+.btn-pago.activo {
+  background-color: #3da35d;
+  color: #fff;
+  box-shadow: 0 0 0 2px #134611 inset;
+}
+
+/* === BOTÓN CONFIRMAR COMPRA === */
+.btn-comprar {
+  margin-top: 25px;
+  background-color: #3da35d;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.btn-comprar:hover {
+  background-color: #2d8a4a;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(61, 163, 93, 0.4);
+}
+
+.btn-comprar:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
