@@ -9,4 +9,5 @@ werkzeug==2.3.7
 Jinja2==3.1.6
 click==8.3.0
 itsdangerous==2.2.0
-
+flask-jwt-extended==4.4.4
+flask_cors==3.0.10

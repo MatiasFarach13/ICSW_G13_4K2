@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap");
+
+.protected-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background-color: #e8fccf;
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
+.protected-box {
+  background-color: #96e072;
+  border-radius: 10px;
+  padding: 40px 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  color: #134611;
+}
+
+.protected-box h2 {
+  margin-bottom: 20px;
+  color: #134611;
+  font-weight: 700;
+}
+
+.protected-box p {
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+}
+
+/* Reutilizamos el botón principal de la paleta */
+.login-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3e8914;
+  color: #e8fccf;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #134611;
+  color: #e8fccf;
+}
+.login-btn:active {
+  background-color: #0f2d07;
+  color: #e8fccf;
+}
