@@ -19,7 +19,6 @@ export default function ConfirmacionEfectivo() {
 
     const compra = JSON.parse(stored);
 
-    // 🧠 Aseguramos que el campo exista con el nombre correcto
     const fechaVisita =
       compra.fecha_visita || compra.fecha || compra.fechaFormateada;
 
@@ -35,7 +34,6 @@ export default function ConfirmacionEfectivo() {
     const token = localStorage.getItem("token");
     const participantes = compra.participantes || [];
 
-    // 🧩 Si ya tenemos los precios calculados (p.ej. tras pago con tarjeta), no se hace fetch
     if (compra.resultado?.detalle) {
       setDetalleCompra(compra.resultado.detalle);
       setTotal(compra.resultado.total_pagado);
@@ -43,7 +41,6 @@ export default function ConfirmacionEfectivo() {
       return;
     }
 
-    // 🔄 Consultar backend para obtener los precios y descuentos actualizados
     fetch("http://localhost:5000/api/comprar-detalle", {
       method: "POST",
       headers: {
@@ -51,7 +48,7 @@ export default function ConfirmacionEfectivo() {
         Authorization: token ? `Bearer ${token}` : "",
       },
       body: JSON.stringify({
-        fecha_visita: fechaVisita, // 👈 aseguramos que el backend reciba esta clave
+        fecha_visita: fechaVisita,
         edades: participantes.map((p) => parseInt(p.edad, 10)),
         tipos_pase: participantes.map((p) => p.tipoPase),
       }),
@@ -73,7 +70,6 @@ export default function ConfirmacionEfectivo() {
       .finally(() => setLoading(false));
   }, [navigate]);
 
-  // 🕒 Estado de carga
   if (loading) {
     return (
       <div className="efectivo-container">
@@ -82,17 +78,13 @@ export default function ConfirmacionEfectivo() {
     );
   }
 
-  // ⚠️ Error amigable en pantalla
   if (errorMsg) {
     return (
       <div className="efectivo-container">
         <div className="efectivo-card">
           <h2>⚠️ Ocurrió un problema</h2>
           <p>{errorMsg}</p>
-          <button
-            className="btn-volver"
-            onClick={() => navigate("/comprar")}
-          >
+          <button className="btn-volver" onClick={() => navigate("/comprar")}>
             🔄 Volver a intentar
           </button>
         </div>
@@ -100,14 +92,13 @@ export default function ConfirmacionEfectivo() {
     );
   }
 
-  // 🎟️ Pantalla de confirmación final
   return (
     <div className="efectivo-container">
       <div className="efectivo-card">
         <h2>🎉 ¡Gracias por tu compra!</h2>
         <p className="mensaje">
-          Hemos enviado un correo de confirmación con los detalles de tu visita
-          a EcoHarmonyPark 🌳
+          En breve recibirás un correo de confirmación con todos los detalles de
+          tu visita a <b>EcoHarmonyPark</b> 🌳
         </p>
 
         <p className="fecha">📅 Fecha de visita: {fecha}</p>

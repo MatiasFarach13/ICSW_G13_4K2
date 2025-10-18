@@ -15,7 +15,7 @@ export default function Comprar() {
   const hoy = new Date();
   const hoyISO = hoy.toISOString().split("T")[0];
   const limite = new Date();
-  limite.setDate(hoy.getDate() + 31);
+  limite.setDate(hoy.getDate() + 30);
   const limiteISO = limite.toISOString().split("T")[0];
 
   // --- Manejo de fecha ---
@@ -35,7 +35,7 @@ export default function Comprar() {
       return;
     }
     if (seleccionada > limite) {
-      setErrorFecha("⚠️ Solo se permiten compras hasta 31 días a futuro.");
+      setErrorFecha("⚠️ Solo se permiten compras hasta 30 días a futuro.");
       return;
     }
     if (diaSemana === 1) {
