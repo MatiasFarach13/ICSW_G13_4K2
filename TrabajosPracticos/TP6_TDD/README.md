@@ -13,6 +13,8 @@ Proyecto de ejemplo para la compra de entradas con reglas de negocio y una peque
 - virtualenv (recomendado para el backend)
 
 ## Instalación (backend)
+
+Linux
 ```bash
 # desde la raíz del repo
 cd backend/src
@@ -21,6 +23,17 @@ source venv/bin/activate
 pip install --upgrade pip
 pip install -r ../../requirements.txt
 ```
+
+Windows
+```bash
+# desde la raíz del repo
+cd backend
+python -m venv venv
+source venv/Scripts/activate
+pip install --upgrade pip
+pip install -r ../requirements.txt
+```
+
 
 ## Instalación (frontend)
 ```bash

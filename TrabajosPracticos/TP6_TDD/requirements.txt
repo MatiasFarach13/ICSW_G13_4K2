@@ -3,7 +3,7 @@ pytest-cov==4.1.0
 flask==2.3.3
 Werkzeug==2.3.7
 flask_sqlalchemy==2.5.1
-SQLAlchemy==2.0.19
+SQLAlchemy==2.0.44
 flask-login==0.6.3
 werkzeug==2.3.7
 Jinja2==3.1.6
