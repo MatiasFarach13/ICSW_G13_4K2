@@ -10,9 +10,17 @@ Proyecto de ejemplo para la compra de entradas con reglas de negocio y una peque
 - Virtualenv
 
 ## Instalación
+Linux
 ```bash
 python3 -m venv venv
 source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+Windows (CMD)
+```
+python -m venv venv
+.\venv\Scripts\activate
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
@@ -20,11 +28,16 @@ pip install -r requirements.txt
 ## Ejecutar la aplicación (recomendado)
 Ejecutar en modo paquete para que las importaciones relativas funcionen correctamente:
 
+Linux
 ```bash
 export DATABASE_URL="sqlite:///./data.db"  # opcional, por defecto usa data.db
 python -m src.app
 ```
-
+Windows
+```bash
+set DATABASE_URL="sqlite:///./data.db # opcional, por defecto usa data.db
+python -m src.app
+```
 La aplicación estará disponible en http://localhost:5000
 
 ## Usuarios seed (archivo DB solamente)
