@@ -6,8 +6,8 @@ from flask_jwt_extended import (
     JWTManager, create_access_token, jwt_required, get_jwt_identity
 )
 
-# Importar tu lógica de negocio
-from clases.gestorCompraEntradas import GestorCompraEntradas, ParqueError
+# Importar tu lógica de negocio (imports relativos, porque este módulo está dentro del paquete `src`)
+from .clases.gestorCompraEntradas import GestorCompraEntradas, ParqueError
 
 # ============================================================
 # 🔧 CONFIGURACIÓN INICIAL
@@ -31,7 +31,7 @@ gestor = GestorCompraEntradas()
 
 # Base de datos
 try:
-    from models import create_sqlite_db
+    from .models import create_sqlite_db
     DATABASE_URL = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
     engine, SessionLocal = create_sqlite_db(DATABASE_URL)
 except Exception:
@@ -44,7 +44,7 @@ def get_session():
     global SessionLocal, engine
     if SessionLocal is None:
         try:
-            from models import create_sqlite_db
+            from .models import create_sqlite_db
             DATABASE_URL = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
             engine, SessionLocal = create_sqlite_db(DATABASE_URL)
         except Exception:
@@ -76,7 +76,7 @@ def api_login():
         return jsonify({'error': 'DB not available'}), 503
 
     try:
-        from models import get_or_create_user_by_email
+        from .models import get_or_create_user_by_email
         user = get_or_create_user_by_email(session, email)
 
         if user.password_hash and user.check_password(password):
@@ -103,7 +103,7 @@ def api_register():
 
     try:
         # ✅ Importamos antes de usar
-        from models import User
+        from .models import User
 
         # Verificar si ya existe el correo
         existing_user = session.query(User).filter_by(email=email).first()
@@ -180,7 +180,7 @@ def api_comprar():
 
         session = get_session()
         if session is not None:
-            from models import Compra
+            from .models import Compra
             user_id = int(get_jwt_identity())
             compra = Compra(
                 fecha=fecha_visita,
@@ -270,7 +270,7 @@ def api_list_compras():
 
     user_id = int(get_jwt_identity())
     try:
-        from models import Compra
+        from .models import Compra
         compras = session.query(Compra).filter_by(user_id=user_id).all()
         return jsonify([
             {
@@ -293,7 +293,7 @@ def api_list_users():
     if session is None:
         return jsonify({'error': 'DB not available'}), 503
     try:
-        from models import User
+        from .models import User
         users = session.query(User).all()
         return jsonify([{'id': u.id, 'email': u.email, 'name': u.name} for u in users])
     finally:
