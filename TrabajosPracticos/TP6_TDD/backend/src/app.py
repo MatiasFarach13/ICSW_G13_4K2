@@ -76,9 +76,11 @@ def api_login():
         return jsonify({'error': 'DB not available'}), 503
 
     try:
-        from .models import get_or_create_user_by_email
-        user = get_or_create_user_by_email(session, email)
-
+        from .models import create_user_by_email
+        user = create_user_by_email(session, email)
+        if not user:
+            # No crear usuario aquí; devolver 401
+            return jsonify({"msg": "Invalid credentials"}), 401
         if user.password_hash and user.check_password(password):
             token = create_access_token(identity=user.id)
             return jsonify({

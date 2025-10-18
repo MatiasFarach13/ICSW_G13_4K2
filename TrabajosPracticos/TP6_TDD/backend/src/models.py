@@ -107,3 +107,13 @@ def get_or_create_user_by_email(session, email, name=None):
     session.add(user)
     session.commit()
     return user
+
+def create_user_by_email(session, email, name=None):
+    """
+    Busca un usuario por email 
+    Retorna el objeto User nunca none.
+    """
+    user = session.query(User).filter_by(email=email).first()
+    if user:
+        return user
+   
