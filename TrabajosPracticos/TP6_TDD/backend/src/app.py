@@ -166,6 +166,18 @@ def api_comprar():
             email=email
         )
 
+        # 🧮 Agregar detalle por participante (tipo, edad, precio final)
+        detalle = [
+            {
+                "tipo": e.tipo_entrada.get_nombre(),
+                "categoria": e.categoria_edad,
+                "precio": e.precio
+            }
+            for e in entradas
+        ]
+        resultado["detalle"] = detalle
+
+
         session = get_session()
         if session is not None:
             from models import Compra
@@ -189,6 +201,61 @@ def api_comprar():
     except Exception as e:
         import traceback
         print("❌ Error inesperado:")
+        print(traceback.format_exc())
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+@app.route('/api/comprar-detalle', methods=['POST'])
+@jwt_required()
+def api_comprar_detalle():
+    """Devuelve cálculo de precios y categorías sin registrar la compra."""
+    try:
+        data = request.get_json()
+        print("📦 Datos recibidos:", data)  # debug
+
+        # 🧩 Validar claves necesarias
+        required = ['fecha_visita', 'edades', 'tipos_pase']
+        for campo in required:
+            if campo not in data:
+                return jsonify({
+                    "success": False,
+                    "error": f"Falta el campo obligatorio '{campo}'"
+                }), 400
+
+        # 🗓️ Conversión y limpieza
+        fecha_visita = date.fromisoformat(data['fecha_visita'])
+        edades = [int(e) if isinstance(e, (int, float, str)) and str(e).isdigit() else 0 for e in data['edades']]
+        tipos_pase = data['tipos_pase']
+
+        # ⚙️ Crear instancia del gestor (clave del problema)
+        gestor = GestorCompraEntradas()
+
+        # 🎟️ Crear entradas con sus precios y categorías
+        entradas = gestor.crear_entrada(tipos_pase, fecha_visita, edades)
+        total = gestor.calcular_monto_total(edades, entradas)
+
+        detalle = [
+            {
+                "tipo": e.get_tipo(),
+                "categoria": e.categoria_edad,
+                "precio": e.precio
+            }
+            for e in entradas
+        ]
+
+        print("✅ Cálculo exitoso:", detalle, "TOTAL:", total)
+
+        return jsonify({
+            "success": True,
+            "resultado": {
+                "total_pagado": total,
+                "detalle": detalle
+            }
+        }), 200
+
+    except Exception as e:
+        import traceback
+        print("❌ Error en cálculo de detalle:")
         print(traceback.format_exc())
         return jsonify({"success": False, "error": str(e)}), 500
 

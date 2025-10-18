@@ -12,19 +12,22 @@ export default function Comprar() {
   const navigate = useNavigate();
 
   const maxParticipantes = 10;
-
   const hoy = new Date();
   const hoyISO = hoy.toISOString().split("T")[0];
   const limite = new Date();
   limite.setDate(hoy.getDate() + 31);
   const limiteISO = limite.toISOString().split("T")[0];
 
+  // --- Manejo de fecha ---
   const handleFechaChange = (e) => {
     const iso = e.target.value;
     if (!iso) return;
 
-    const seleccionada = new Date(iso);
-    const diaSemana = seleccionada.getDay();
+    // ✅ Ajuste local
+    const [year, month, day] = iso.split("-").map(Number);
+    const seleccionada = new Date(year, month - 1, day);
+    const diaSemana = seleccionada.getDay(); // 0=domingo, 1=lunes...
+
     setFechaVisita(iso);
 
     if (seleccionada < hoy) {
@@ -45,6 +48,7 @@ export default function Comprar() {
     setFechaFormateada(`${dd}/${mm}/${yyyy}`);
   };
 
+  // --- Participantes ---
   const agregarParticipante = () => {
     if (participantes.length >= maxParticipantes) return;
     setParticipantes([
@@ -67,31 +71,68 @@ export default function Comprar() {
     }
   };
 
+  // --- Confirmar compra ---
   async function handleCompra(e) {
     e.preventDefault();
+    setError(null);
 
     if (!fechaVisita || errorFecha) {
       setError("Debe seleccionar una fecha válida.");
       return;
     }
-
     if (participantes.length === 0) {
       setError("Debe agregar al menos un participante.");
       return;
     }
 
-    const compra = {
-      fecha_visita: fechaFormateada,
-      participantes,
+    const token = localStorage.getItem("token");
+    const userData = JSON.parse(localStorage.getItem("user"));
+    const email = userData?.email || "sin_email@ejemplo.com";
+
+    const edadesLista = participantes.map((p) => parseInt(p.edad, 10));
+    const tiposLista = participantes.map((p) => p.tipoPase);
+
+    const body = {
+      fecha_visita: fechaVisita, // formato ISO
+      edades: edadesLista,
+      tipos_pase: tiposLista,
       forma_pago: formaPago,
+      email: email,
     };
 
-    localStorage.setItem("compraPendiente", JSON.stringify(compra));
+    try {
+      const res = await fetch("http://localhost:5000/api/comprar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(body),
+      });
 
-    if (formaPago === "Tarjeta") {
-      navigate("/confirmar-compra");
-    } else {
-      navigate("/confirmacion-efectivo");
+      const data = await res.json();
+      if (!data.success) throw new Error(data.error || "Error en la compra");
+
+      // Guardamos la compra en localStorage (para la pantalla de resumen)
+      // Guardamos la compra en localStorage con los participantes
+      localStorage.setItem(
+        "compraPendiente",
+        JSON.stringify({
+          ...data.resultado, // lo que devuelve el backend
+          participantes,     // edades y tipos de pase del usuario
+          fecha_visita: fechaVisita, // ISO
+        })
+      );
+
+      // Redirigimos según forma de pago
+      if (formaPago === "Tarjeta") {
+        navigate("/confirmar-compra");
+      } else {
+        navigate("/confirmacion-efectivo");
+      }
+    } catch (err) {
+      console.error("❌ Error al crear la compra:", err);
+      setError(err.message);
     }
   }
 
@@ -112,7 +153,6 @@ export default function Comprar() {
             className="input-select"
           />
         </label>
-
         {errorFecha && <p className="error">{errorFecha}</p>}
 
         {/* === PARTICIPANTES === */}
@@ -126,10 +166,10 @@ export default function Comprar() {
             ➕ Agregar participante
           </button>
 
-          {participantes.map((p) => (
+          {participantes.map((p, i) => (
             <div key={p.id} className="card-participante">
               <div className="participante-header">
-                <h4>Participante #{participantes.indexOf(p) + 1}</h4>
+                <h4>Participante #{i + 1}</h4>
               </div>
 
               <label>
