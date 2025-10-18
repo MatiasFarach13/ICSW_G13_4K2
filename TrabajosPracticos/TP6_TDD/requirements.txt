@@ -1,12 +1,13 @@
 pytest==7.4.0
 pytest-cov==4.1.0
 flask==2.3.3
+Werkzeug==2.3.7
 flask_sqlalchemy==2.5.1
 SQLAlchemy==2.0.44
 flask-login==0.6.3
+werkzeug==2.3.7
 Jinja2==3.1.6
 click==8.3.0
 itsdangerous==2.2.0
 flask-jwt-extended==4.4.4
 flask_cors==3.0.10
-
