@@ -1,0 +1,5 @@
+pytest==7.4.0
+pytest-cov==4.1.0
+
+# Dependencias de desarrollo / testing. Instalar en el entorno dev con:
+# pip install -r requirements-dev.txt
