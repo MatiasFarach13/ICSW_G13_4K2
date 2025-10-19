@@ -37,7 +37,6 @@ Arrancar el backend y el frontend en dos terminales separados.
 
 1) Backend (Flask)
 
-Linux
 ```bash
 # desde backend/src con el virtualenv activado
 export FLASK_APP=src.app
@@ -65,10 +64,10 @@ Por defecto el dev server (Vite/CRA) servirá la UI en http://localhost:5173 (u 
 ## Ejecutar sólo backend (modo producción mínimo)
 ```bash
 # con virtualenv activado y variables seteadas
-python -m backend/src/app
+python  backend/src/app.py
 # o
 cd backend/src
-python -m app
+python  app.py
 ```
 
 ## Ejecutar tests (Python)
