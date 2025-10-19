@@ -4,12 +4,19 @@
 Breve guía para ejecutar, probar y preparar este repositorio para push.
 
 ## Resumen
-Proyecto de ejemplo para la compra de entradas con reglas de negocio y una pequeña API en Flask y una interfaz frontend (React).
+Proyecto académico de ejemplo para la compra de entradas a un parque, desarrollado como parte del trabajo práctico 6 de Ingeniería  y Calidad de Software.
+El proyecto simula un flujo completo de compra de entradas, incluyendo:
+- Selección de fecha de visita
+- Validación de cantidad máxima de entradas
+- Cálculo automático del monto total
+- Selección y procesamiento del método de pago (con redirección simulada a Mercado Pago)
+- Envío de mail de confirmación
+La aplicación está compuesta por un backend en Flask (Python) y un frontend en React, ambos diseñados para facilitar pruebas unitarias y de integración.
 
 ```markdown
 # TP6 - Sistema de Compra de Entradas (TDD)
 
-Este repositorio contiene un pequeño sistema para la compra de entradas, desarrollado con un backend en Flask y un frontend en React. El proyecto fue desarrollado con la metodología TDD (Test-Driven Development); más abajo explico cómo se aplicó y cómo escribir/ejecutar tests.
+Este repositorio contiene un pequeño sistema que fue implementado siguiendo la metodología TDD (Test-Driven Development), priorizando la calidad del código, el diseño limpio y la validación temprana de las reglas de negocio, desarrollado con un backend en Flask y un frontend en React. Más abajo se explica cómo se aplicó y cómo escribir/ejecutar tests.
 
 Tabla de contenidos
 - Requisitos
