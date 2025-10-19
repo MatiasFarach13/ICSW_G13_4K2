@@ -1,70 +1,81 @@
+```markdown
 # TP6 - Sistema de Compra de Entradas
 
 Breve guía para ejecutar, probar y preparar este repositorio para push.
 
 ## Resumen
-Proyecto de ejemplo para la compra de entradas con reglas de negocio y una pequeña API/plantillas web.
+Proyecto de ejemplo para la compra de entradas con reglas de negocio y una pequeña API en Flask y una interfaz frontend (React).
 
 ## Requisitos
 - Python 3.11+
-- Virtualenv
+- Node.js 18+ (para el frontend)
+- npm o yarn
+- virtualenv (recomendado para el backend)
 
-## Instalación
-Linux
+## Instalación (backend)
+
 ```bash
+# desde la raíz del repo
+cd backend/src
 python3 -m venv venv
 source venv/bin/activate
 pip install --upgrade pip
-pip install -r requirements.txt
-```
-Windows (CMD)
-```
-python -m venv venv
-.\venv\Scripts\activate
-pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r ../../requirements.txt
 ```
 
-## Ejecutar la aplicación (recomendado)
-Ejecutar en modo paquete para que las importaciones relativas funcionen correctamente:
+
+## Instalación (frontend)
+```bash
+cd frontend
+npm install
+# o si usas yarn:
+# yarn
+```
+
+## Ejecutar la aplicación completa (desarrollo)
+Arrancar el backend y el frontend en dos terminales separados.
+
+1) Backend (Flask)
 
 Linux
 ```bash
-export DATABASE_URL="sqlite:///./data.db"  # opcional, por defecto usa data.db
+# desde backend/src con el virtualenv activado
+export FLASK_APP=src.app
+export FLASK_ENV=development
+# opcional: usar base de datos en archivo
+export DATABASE_URL="sqlite:///./data.db"
 python -m src.app
 ```
-Windows
-```bash
-set DATABASE_URL="sqlite:///./data.db # opcional, por defecto usa data.db
-python -m src.app
-```
-La aplicación estará disponible en http://localhost:5000
 
-## Usuarios seed (archivo DB solamente)
-Al crear una base de datos en archivo (no en memoria) el sistema crea dos usuarios de ejemplo:
+La API/servidor estará disponible en http://localhost:5000
+
+2) Frontend (desarrollo)
+
+```bash
+# desde la carpeta frontend
+cd frontend
+npm run dev
+```
 
 - juan@example.com / juanpass
 - ana@example.com / anapass
 
-Estos son para desarrollo y pruebas; cámbialos o elimínalos antes de producción.
+Por defecto el dev server (Vite/CRA) servirá la UI en http://localhost:5173 (u otro puerto que el configurado). Asegúrate de que las llamadas al backend apunten a http://localhost:5000 (puedes configurar un proxy en `frontend/package.json` o en el dev server).
 
-## Notas sobre Login
-- Visita `/login` e inicia sesión con email y contraseña.
-- Si el usuario no existía, se crea y la contraseña ingresada se guarda (con hashing).
-- Si el usuario existía, la contraseña se verifica.
-- No es seguro para producción (no hay registro formal, recuperación de contraseña ni CSRF en formularios).
+## Ejecutar sólo backend (modo producción mínimo)
+```bash
+# con virtualenv activado y variables seteadas
+python -m backend/src/app
+# o
+cd backend/src
+python -m app
+```
 
-## Flujo de compra
-- Debes iniciar sesión antes de comprar (las rutas principales requieren autenticación).
-- El campo email fue eliminado del formulario de compra en la UI: el sistema usa el email del usuario autenticado.
-- El sistema simula el envío de email (se imprime en la salida estándar) y muestra instrucciones de pago en la página de confirmación.
-
-## Preparar para push (checklist)
-- [ ] Actualizar `data.db` si no quieres subir datos de prueba
-- [x] Añadir `.gitignore` para ignorar virtualenv, DB y artefactos
-- [x] Asegurarse de que `requirements.txt` contiene las dependencias
-- [ ] Actualizar `README.md` con cualquier instrucción adicional
-
+## Ejecutar tests (Python)
+```bash
+# desde la raíz del repo
+pytest -v
+```
 ---
 
 Trabajo Práctico 6 - Grupo 13

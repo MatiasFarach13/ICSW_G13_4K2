@@ -1,0 +1,88 @@
+.efectivo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f6f9f7;
+  font-family: "Poppins", sans-serif;
+}
+
+.efectivo-card {
+  background: white;
+  padding: 2rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 400px;
+  text-align: center;
+  animation: fadeIn 0.6s ease;
+}
+
+.efectivo-card h2 {
+  color: #00a650;
+  font-weight: 700;
+}
+
+.mensaje {
+  color: #555;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.fecha {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.resumen {
+  text-align: left;
+}
+
+.resumen ul {
+  list-style: none;
+  padding: 0;
+}
+
+.resumen li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #111;
+}
+
+.btn-volver {
+  background: #00a650;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 2rem;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.btn-volver:hover {
+  background: #00c96a;
+  transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
