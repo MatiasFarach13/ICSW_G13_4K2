@@ -13,6 +13,7 @@ export default function Comprar() {
 
   const maxParticipantes = 10;
   const hoy = new Date();
+  hoy.setHours(0, 0, 0, 0);
   const hoyISO = hoy.toISOString().split("T")[0];
   const limite = new Date();
   limite.setDate(hoy.getDate() + 30);
