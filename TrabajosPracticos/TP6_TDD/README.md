@@ -1,9 +1,7 @@
-```markdown
-# TP6 - Sistema de Compra de Entradas
+# TP6 - Sistema de Compra de Entradas (TDD)
+Este repositorio contiene un pequeño sistema que fue implementado siguiendo la metodología TDD (Test-Driven Development), priorizando la calidad del código, el diseño limpio y la validación temprana de las reglas de negocio, desarrollado con un backend en Flask y un frontend en React. Más abajo se explica cómo se aplicó y cómo escribir/ejecutar tests.
 
-Breve guía para ejecutar, probar y preparar este repositorio para push.
-
-## Resumen
+## Caso
 Proyecto académico de ejemplo para la compra de entradas a un parque, desarrollado como parte del trabajo práctico 6 de Ingeniería  y Calidad de Software.
 El proyecto simula un flujo completo de compra de entradas, incluyendo:
 - Selección de fecha de visita
@@ -13,12 +11,7 @@ El proyecto simula un flujo completo de compra de entradas, incluyendo:
 - Envío de mail de confirmación
 La aplicación está compuesta por un backend en Flask (Python) y un frontend en React, ambos diseñados para facilitar pruebas unitarias y de integración.
 
-```markdown
-# TP6 - Sistema de Compra de Entradas (TDD)
-
-Este repositorio contiene un pequeño sistema que fue implementado siguiendo la metodología TDD (Test-Driven Development), priorizando la calidad del código, el diseño limpio y la validación temprana de las reglas de negocio, desarrollado con un backend en Flask y un frontend en React. Más abajo se explica cómo se aplicó y cómo escribir/ejecutar tests.
-
-Tabla de contenidos
+## Tabla de contenidos
 - Requisitos
 - Cómo ejecutar (backend + frontend)
 - Tests y TDD (cómo están organizados y flujo recomendado)
@@ -117,4 +110,3 @@ Consejos prácticos de TDD para este repo
 ---
 
 Trabajo Práctico 6 - Grupo 13
-``` 
