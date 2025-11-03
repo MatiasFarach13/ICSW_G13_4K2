@@ -23,7 +23,7 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
     - TrabajosPracticos
         - TP6_TDD  
     - Teorico
-        - PrsentacionesDeClase
+        - PresentacionesDeClase
         - Bibliografia
         - TrabajosInvestigacion
     - Parciales
