@@ -23,13 +23,14 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
     - TrabajosPracticos
         - TP6_TDD  
     - Teorico
-        - PresentacionesDeClase
+        - PrsentacionesDeClase
         - Bibliografia
+        - TrabajosInvestigacion
     - Parciales
         - Parcial1
-          - Enunciados Parciales Viejos
+          - EnunciadosParcialesViejos
         - Parcial2
-          - Enunciados Parciales Viejos
+          - EnunciadosParcialesViejos
     - Planificacion
 
 ---
@@ -39,12 +40,13 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 | Nombre ítem configuración                  | Regla de nombrado                                         | Ubicación física                                                           | Tipo de ítem          |
 |--------------------------------------------|-----------------------------------------------------------|----------------------------------------------------------------------------|-----------------------|
 | Enunciados de Trabajos Prácticos           | `TPs_Enunciados.pdf`                                        | ICSW_G13_4K2/TrabajosPracticos/                                            | Trabajo Práctico      |
-| Resolución de Trabajo Práctico             | `TP<Numero>_<Nombre>_Resolucion.pdf`               | ICSW_G13_4K2/TrabajosPracticos/                 | Trabajo Práctico      |
-| Presentaciones de clase                    | `<NumeroDeClase>_<NombreTema>.pdf`             | ICSW_G13_4K2/Teorico/PPT/                                                  | Teórico               |
-| Bibliografía                               | `ICSW_Bibliografia_<Nombre>.pdf`                      | ICSW_G13_4K2/Teorico/Bibliografia/                                         | Teórico               |
-| Enunciados de Trabajos de investigación    | `TPsInvestigacion_Enunciados.pdf`                            | ICSW_G13_4K2/TrabajosPracticos/                                            | Trabajo Práctico      |
+| Resolución de Trabajo Práctico             | `TPEvaluable_<NombreEvaluable>_Resolucion.pdf`               | ICSW_G13_4K2/TrabajosPracticos/                 | Trabajo Práctico      |
+| Presentaciones de clase                    | `<NumeroDeClase>_<NombreTema>.pdf`             | ICSW_G13_4K2/Teorico/PrsentacionesDeClase/                                                  | Teórico               |
+| Bibliografía                               | `ICSW_Bibliografia_<NombreBibliografia>.pdf`                      | ICSW_G13_4K2/Teorico/Bibliografia/                                         | Teórico               |
+| Enunciados de Trabajos de investigación    | `TPsInvestigacion_Enunciados.pdf`                            | ICSW_G13_4K2/Teorico/TrabajosInvestigacion                                            | Trabajo Práctico      |
+| Resolucion de Trabajo de Investigación    | `TPInvestigacion_<NombreInvestigacion>_Resolucion.pdf`                            | ICSW_G13_4K2/Teorico/TrabajosInvestigacion                                           | TrabajosInvestigacion     |
 | Guía de Ejercicios Prácticos Resueltos     | `EjerciciosPracticosResueltos.pdf`                          | ICSW_G13_4K2/TrabajosPracticos/                                            | Trabajo Práctico      |
-| Enunciado de parcial viejo                 | `<Año>_Parcial<Numero>_<Titulo>.pdf`                       | ICSW_G13_4K2/Parciales/Parcial&lt;Numero&gt;/EnunciadoParcialesViejos/                                                    | Parciales             |
+| Enunciado de parcial viejo                 | `<Año>_Parcial_<Numero>_<Titulo>.pdf`                       | ICSW_G13_4K2/Parciales/Parcial&lt;Numero&gt;/EnunciadoParcialesViejos/                                                    | Parciales             |
 | Resumen de parcial                 | `Resumen_Parcial<Numero>.pdf`                       | ICSW_G13_4K2/Parciales/Parcial&lt;Numero&gt;/                                                    | Parciales             |
 | Herramientas para parciales |                `Parcial_Herramientas.pdf`                            | ICSW_G13_4K2/Parciales/                                                          | Parciales             |
 | Planificación de la materia                | `PlanificacionICSW.pdf`                                     | ICSW_G13_4K2/Planificacion/                                                | Planificación         |
@@ -69,11 +71,12 @@ Repositorio para Ingeniería y Calidad de Software, curso 4K2 UTN FRC - Grupo 13
 | TP | Trabajo Práctico |
 | N | Número |
 | G13 | Grupo 13 |
-| PPT | Power Point |
 | 4K2 | Comision 2 del 4to año de la carrera Ingenieria en Sistemas de Información|
 | <> | Indica un campo variable que debe ser reemplazado por un valor específico (por ejemplo: número, nombre, extensión, etc.) |
 | < Numero > | Campo variable que debe reemplazarse por un número específico |
-| < Nombre > | Campo variable que debe reemplazarse por el nombre del tema o archivo |
+| < NombreEvaluable >| Nombre del tema del TP Evaluable |
+| < NombreInvestigacion >| Nombre del TP de investigación (e.g: PosterCientifico, CharlaTED) |
+| < NombreBibliografia >| Titulo de la bibliografía |
 | < NombreTema > | Nombre del tema tratado en la clase o presentación |
 | < NombreCaso > | Nombre del caso práctico o de estudio |
 | < extension > | Extensión del archivo (ej. .pdf, .docx, .pptx) |
