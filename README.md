@@ -45,21 +45,21 @@ Estas son las carpetas que forman la estructura del repositorio (no se incluyen 
 
 | Nombre ítem de configuración | Regla de nombrado | Ubicación física | Tipo de ítem |
 | --- | --- | --- | --- |
-| Enunciados de Trabajos Prácticos | `TPs_Enunciados.pdf` | ICSW_G13_4K2/TrabajosPracticos/ | Trabajo Práctico |
-| Resolución de Trabajo Práctico | `TPEvaluable_&lt;NombreEvaluable&gt;_Resolucion.pdf` | ICSW_G13_4K2/TrabajosPracticos/ | Trabajo Práctico |
-| Presentaciones de clase | `&lt;NumeroClase&gt;_&lt;NombreTema&gt;.pdf` | ICSW_G13_4K2/Teorico/PresentacionesDeClase/ | Teórico |
-| Bibliografía | `ICSW_Bibliografia_&lt;NombreBibliografia&gt;.pdf` | ICSW_G13_4K2/Teorico/Bibliografia/ | Teórico |
-| Enunciados de Trabajos de investigación | `TPsInvestigacion_Enunciados.pdf` | ICSW_G13_4K2/Teorico/TrabajosInvestigacion/ | Trabajo Práctico |
-| Resolución de Trabajo de Investigación | `TPInvestigacion_&lt;NombreInvestigacion&gt;_Resolucion.pdf` | ICSW_G13_4K2/Teorico/TrabajosInvestigacion/ | Trabajo de Investigación |
-| Guía de Ejercicios Prácticos Resueltos | `EjerciciosPracticosResueltos.pdf` | ICSW_G13_4K2/TrabajosPracticos/ | Trabajo Práctico |
-| Enunciado de parcial viejo | `&lt;Año&gt;_Parcial_&lt;NumeroParcial&gt;_&lt;EnunciadoParcial&gt;.pdf` | ICSW_G13_4K2/Parciales/ | Parciales |
-| Resumen de parcial | `Resumen_Parcial&lt;NumeroParcial&gt;.pdf` | ICSW_G13_4K2/Parciales/Parcial&lt;Numero&gt;/ | Parciales |
-| Herramientas para parciales | `Parcial_Herramientas.pdf` | ICSW_G13_4K2/Parciales/ | Parciales |
-| Planificación de la materia | `PlanificacionICSW.pdf` | ICSW_G13_4K2/Planificacion/ | Planificación |
-| Cronograma de la materia | `CronogramaICSW.pdf` | ICSW_G13_4K2/Planificacion/ | Planificación |
-| Template para parcial | `Parcial&lt;NumeroParcial&gt;_TemplateParcial.docx` | ICSW_G13_4K2/Parciales/Parcial&lt;NumeroParcial&gt;/Templates/ | Templates |
-| Plan de Configuración | `ICSW_PlanDeGestionDeConfiguracion_G13.pdf` | ICSW_G13_4K2/ | Plan de Configuración |
-| Justificación de Diseño TP6 | `TPEvaluable_TDD_JustificacionDeDiseño.pdf` | ICSW_G13_4K2/TrabajosPracticos/TP6_TDD/ | Trabajo Práctico |
+| Enunciados de Trabajos Prácticos | TPs_Enunciados.pdf | ICSW_G13_4K2/TrabajosPracticos/ | Trabajo Práctico |
+| Resolución de Trabajo Práctico | TPEvaluable_&lt;NombreEvaluable&gt;_Resolucion.pdf | ICSW_G13_4K2/TrabajosPracticos/ | Trabajo Práctico |
+| Presentaciones de clase | &lt;NumeroClase&gt;_&lt;NombreTema&gt;.pdf | ICSW_G13_4K2/Teorico/PresentacionesDeClase/ | Teórico |
+| Bibliografía | ICSW_Bibliografia_&lt;NombreBibliografia&gt;.pdf | ICSW_G13_4K2/Teorico/Bibliografia/ | Teórico |
+| Enunciados de Trabajos de investigación | TPsInvestigacion_Enunciados.pdf | ICSW_G13_4K2/Teorico/TrabajosInvestigacion/ | Trabajo Práctico |
+| Resolución de Trabajo de Investigación | TPInvestigacion_&lt;NombreInvestigacion&gt;_Resolucion.pdf | ICSW_G13_4K2/Teorico/TrabajosInvestigacion/ | Trabajo de Investigación |
+| Guía de Ejercicios Prácticos Resueltos | EjerciciosPracticosResueltos.pdf | ICSW_G13_4K2/TrabajosPracticos/ | Trabajo Práctico |
+| Enunciado de parcial viejo | &lt;Año&gt;_Parcial_&lt;NumeroParcial&gt;_&lt;EnunciadoParcial&gt;.pdf | ICSW_G13_4K2/Parciales/ | Parciales |
+| Resumen de parcial | Resumen_Parcial&lt;NumeroParcial&gt;.pdf | ICSW_G13_4K2/Parciales/Parcial&lt;Numero&gt;/ | Parciales |
+| Herramientas para parciales | Parcial_Herramientas.pdf | ICSW_G13_4K2/Parciales/ | Parciales |
+| Planificación de la materia | PlanificacionICSW.pdf | ICSW_G13_4K2/Planificacion/ | Planificación |
+| Cronograma de la materia | CronogramaICSW.pdf | ICSW_G13_4K2/Planificacion/ | Planificación |
+| Template para parcial | Parcial&lt;NumeroParcial&gt;_TemplateParcial.docx | ICSW_G13_4K2/Parciales/Parcial&lt;NumeroParcial&gt;/Templates/ | Templates |
+| Plan de Configuración | ICSW_PlanDeGestionDeConfiguracion_G13.pdf | ICSW_G13_4K2/ | Plan de Configuración |
+| Justificación de Diseño TP6 | TPEvaluable_TDD_JustificacionDeDiseño.pdf | ICSW_G13_4K2/TrabajosPracticos/TP6_TDD/ | Trabajo Práctico |
 
 ---
 
